@@ -17,3 +17,8 @@
 .layout > div:first-child:not(.recent-posts) {
     background: rgba(255, 255, 255, 0.9);
 }
+
+/* 禁止头像在鼠标悬停时旋转 */
+#aside-content .card-info .avatar-img:hover {
+    transform: none !important;
+}

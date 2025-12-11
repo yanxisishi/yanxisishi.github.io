@@ -4,7 +4,7 @@
     <title>1. C语言基础与数据</title>
     <url>/2025/12/10/1.%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h1 id="第一章：C-语言基础与数据"><a href="#第一章：C-语言基础与数据" class="headerlink" title="第一章：C 语言基础与数据"></a>第一章：C 语言基础与数据</h1><hr>
-<h2 id="1-C-语言程序的最小结构"><a href="#1-C-语言程序的最小结构" class="headerlink" title="1. C 语言程序的最小结构"></a>1. C 语言程序的最小结构</h2><p>所有的 C 语言程序都始于一个核心结构。</p>
+<h2 id="C-语言程序的最小结构"><a href="#C-语言程序的最小结构" class="headerlink" title="C 语言程序的最小结构"></a>C 语言程序的最小结构</h2><p>所有的 C 语言程序都始于一个核心结构。</p>
 <table>
 <thead>
 <tr>
@@ -35,7 +35,7 @@
 </tr>
 </tbody></table>
 <hr>
-<h3 id="习题-1-对应：C-语言程序的最小结构"><a href="#习题-1-对应：C-语言程序的最小结构" class="headerlink" title="习题 1 (对应：C 语言程序的最小结构)"></a><strong>习题 1 (对应：C 语言程序的最小结构)</strong></h3><p><strong>题目：</strong> 请编写一个完整的 C 语言程序，在屏幕上打印输出字符串 <code>Hello, World!</code> 并换行。</p>
+<h3 id="习题-对应：C-语言程序的最小结构"><a href="#习题-对应：C-语言程序的最小结构" class="headerlink" title="习题 (对应：C 语言程序的最小结构)"></a><strong>习题 (对应：C 语言程序的最小结构)</strong></h3><p><strong>题目：</strong> 请编写一个完整的 C 语言程序，在屏幕上打印输出字符串 <code>Hello, World!</code> 并换行。</p>
 <p><strong>要求：</strong> 包含必要的头文件，主函数结构完整，返回值正确。</p>
 <p><strong>预期输出结果</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello, World!</span><br></pre></td></tr></table></figure>
@@ -51,7 +51,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="2-标识符与命名规则-导师补充"><a href="#2-标识符与命名规则-导师补充" class="headerlink" title="2. 标识符与命名规则 (导师补充)"></a>2. 标识符与命名规则 (导师补充)</h2><p>在定义变量（如 <code>score</code>, <code>weight</code>）时，名字不能随便起。</p>
+<h2 id="标识符与命名规则-导师补充"><a href="#标识符与命名规则-导师补充" class="headerlink" title="标识符与命名规则 (导师补充)"></a>标识符与命名规则 (导师补充)</h2><p>在定义变量（如 <code>score</code>, <code>weight</code>）时，名字不能随便起。</p>
 <ol>
 <li><p><strong>组成</strong>：只能包含<strong>字母</strong> (A-Z, a-z)、<strong>数字</strong> (0-9)、<strong>下划线</strong> (<code>_</code>)。</p>
 </li>
@@ -61,7 +61,7 @@
 </li>
 </ol>
 <hr>
-<h3 id="习题-2-对应：标识符与命名规则"><a href="#习题-2-对应：标识符与命名规则" class="headerlink" title="习题 2 (对应：标识符与命名规则)"></a><strong>习题 2 (对应：标识符与命名规则)</strong></h3><p><strong>题目：</strong> 判断下列变量名是否合法。待判断变量名：</p>
+<h3 id="习题-对应：标识符与命名规则"><a href="#习题-对应：标识符与命名规则" class="headerlink" title="习题 (对应：标识符与命名规则)"></a><strong>习题 (对应：标识符与命名规则)</strong></h3><p><strong>题目：</strong> 判断下列变量名是否合法。待判断变量名：</p>
 <ol>
 <li><p><code>2nd_score</code></p>
 </li>
@@ -84,7 +84,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="3-基本数据类型"><a href="#3-基本数据类型" class="headerlink" title="3. 基本数据类型"></a>3. 基本数据类型</h2><p>数据类型决定了变量存储的数据种类和占用的内存空间大小。</p>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>数据类型决定了变量存储的数据种类和占用的内存空间大小。</p>
 <table>
 <thead>
 <tr>
@@ -127,7 +127,7 @@
 </li>
 </ul>
 <hr>
-<h3 id="习题-3-对应：基本数据类型"><a href="#习题-3-对应：基本数据类型" class="headerlink" title="习题 3 (对应：基本数据类型)"></a><strong>习题 3 (对应：基本数据类型)</strong></h3><p><strong>题目：</strong> 编写程序，定义以下 4 个变量并赋予初始值：</p>
+<h3 id="习题-对应：基本数据类型"><a href="#习题-对应：基本数据类型" class="headerlink" title="习题 (对应：基本数据类型)"></a><strong>习题 (对应：基本数据类型)</strong></h3><p><strong>题目：</strong> 编写程序，定义以下 4 个变量并赋予初始值：</p>
 <ol>
 <li><p>整型 <code>age</code> &#x3D; 18</p>
 </li>
@@ -153,7 +153,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="4-核心-I-O-函数-输入-输出"><a href="#4-核心-I-O-函数-输入-输出" class="headerlink" title="4. 核心 I&#x2F;O 函数 (输入&#x2F;输出)"></a>4. 核心 I&#x2F;O 函数 (输入&#x2F;输出)</h2><table>
+<h2 id="核心-I-O-函数-输入-输出"><a href="#核心-I-O-函数-输入-输出" class="headerlink" title="核心 I&#x2F;O 函数 (输入&#x2F;输出)"></a>核心 I&#x2F;O 函数 (输入&#x2F;输出)</h2><table>
 <thead>
 <tr>
 <th><strong>函数</strong></th>
@@ -188,7 +188,7 @@
 </li>
 </ul>
 <hr>
-<h3 id="题-4-对应：核心-I-O-函数"><a href="#题-4-对应：核心-I-O-函数" class="headerlink" title="题 4 (对应：核心 I&#x2F;O 函数)"></a><strong>题 4 (对应：核心 I&#x2F;O 函数)</strong></h3><p><strong>题目：</strong> 编写一个程序，要求用户输入他的<strong>学号 (整数)</strong> 和 <strong>体重 (浮点数)</strong>，然后程序将这两项信息打印出来。</p>
+<h3 id="习题-对应：核心-I-O-函数"><a href="#习题-对应：核心-I-O-函数" class="headerlink" title="习题 (对应：核心 I&#x2F;O 函数)"></a><strong>习题 (对应：核心 I&#x2F;O 函数)</strong></h3><p><strong>题目：</strong> 编写一个程序，要求用户输入他的<strong>学号 (整数)</strong> 和 <strong>体重 (浮点数)</strong>，然后程序将这两项信息打印出来。</p>
 <p><strong>要求：</strong></p>
 <ol>
 <li><p>学号使用 <code>int</code> 类型，体重使用 <code>double</code> 类型。</p>
@@ -212,7 +212,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="5-运算符"><a href="#5-运算符" class="headerlink" title="5. 运算符"></a>5. 运算符</h2><h3 id="5-1-算术运算符"><a href="#5-1-算术运算符" class="headerlink" title="5.1 算术运算符"></a>5.1 算术运算符</h3><p>用于数学计算。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>用于数学计算。</p>
 <table>
 <thead>
 <tr>
@@ -255,7 +255,7 @@
 <li><p>若想得到浮点结果，至少一个操作数必须是浮点类型：<code>10.0 / 3</code> 或 <code>(float)10 / 3</code>。</p>
 </li>
 </ul>
-<h3 id="5-2-关系运算符"><a href="#5-2-关系运算符" class="headerlink" title="5.2 关系运算符"></a>5.2 关系运算符</h3><p>用于比较两个值，结果是 <strong>真 (1)</strong> 或 <strong>假 (0)</strong>。</p>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>用于比较两个值，结果是 <strong>真 (1)</strong> 或 <strong>假 (0)</strong>。</p>
 <table>
 <thead>
 <tr>
@@ -288,7 +288,7 @@
 <td>不等于</td>
 </tr>
 </tbody></table>
-<h3 id="5-3-逻辑运算符"><a href="#5-3-逻辑运算符" class="headerlink" title="5.3 逻辑运算符"></a>5.3 逻辑运算符</h3><p>用于组合多个关系表达式。</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>用于组合多个关系表达式。</p>
 <table>
 <thead>
 <tr>
@@ -317,7 +317,7 @@
 </li>
 </ul>
 <hr>
-<h3 id="习题-5-1-对应：算术运算符"><a href="#习题-5-1-对应：算术运算符" class="headerlink" title="习题 5.1 (对应：算术运算符)"></a><strong>习题 5.1 (对应：算术运算符)</strong></h3><p><strong>题目：</strong> 计算 10 和 3 的<strong>和、差、积</strong>，以及 10 除以 3 的<strong>整数商</strong>和<strong>浮点数商</strong>。</p>
+<h3 id="习题1-对应：算术运算符"><a href="#习题1-对应：算术运算符" class="headerlink" title="习题1 (对应：算术运算符)"></a><strong>习题1 (对应：算术运算符)</strong></h3><p><strong>题目：</strong> 计算 10 和 3 的<strong>和、差、积</strong>，以及 10 除以 3 的<strong>整数商</strong>和<strong>浮点数商</strong>。</p>
 <p><strong>要求：</strong></p>
 <ol>
 <li><p>必须使用 <code>int</code>, <code>float</code> 或 <code>double</code> 至少三种数据类型。</p>
@@ -339,7 +339,7 @@
 </li>
 </ol>
 <hr>
-<h3 id="习题-5-2-对应：关系运算符"><a href="#习题-5-2-对应：关系运算符" class="headerlink" title="习题 5.2 (对应：关系运算符)"></a><strong>习题 5.2 (对应：关系运算符)</strong></h3><p><strong>题目：</strong> 定义两个整数 <code>a = 5</code> 和 <code>b = 3</code>。请分别打印 <code>a &gt; b</code>, <code>a &lt; b</code>, <code>a == b</code> 的运算结果。</p>
+<h3 id="习题2-对应：关系运算符"><a href="#习题2-对应：关系运算符" class="headerlink" title="习题2 (对应：关系运算符)"></a><strong>习题2 (对应：关系运算符)</strong></h3><p><strong>题目：</strong> 定义两个整数 <code>a = 5</code> 和 <code>b = 3</code>。请分别打印 <code>a &gt; b</code>, <code>a &lt; b</code>, <code>a == b</code> 的运算结果。</p>
 <p><strong>要求：</strong> 理解关系运算的结果本质上是整数 1 (真) 或 0 (假)。</p>
 <p><strong>预期输出结果：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5 &gt; 3 的结果是: 1</span><br><span class="line">5 &lt; 3 的结果是: 0</span><br><span class="line">5 == 3 的结果是: 0</span><br></pre></td></tr></table></figure>
@@ -355,7 +355,7 @@
 </li>
 </ol>
 <hr>
-<h3 id="习题-5-3-对应：逻辑运算符"><a href="#习题-5-3-对应：逻辑运算符" class="headerlink" title="习题 5.3 (对应：逻辑运算符)"></a><strong>习题 5.3 (对应：逻辑运算符)</strong></h3><p><strong>题目：</strong> 验证逻辑运算的“短路”现象。定义 <code>int a = 0</code> 和 <code>int b = 10</code>。执行表达式 <code>(a != 0) &amp;&amp; (b++ &gt; 10)</code> 后，打印 <code>b</code> 的值。</p>
+<h3 id="习题3-对应：逻辑运算符"><a href="#习题3-对应：逻辑运算符" class="headerlink" title="习题3 (对应：逻辑运算符)"></a><strong>习题3 (对应：逻辑运算符)</strong></h3><p><strong>题目：</strong> 验证逻辑运算的“短路”现象。定义 <code>int a = 0</code> 和 <code>int b = 10</code>。执行表达式 <code>(a != 0) &amp;&amp; (b++ &gt; 10)</code> 后，打印 <code>b</code> 的值。</p>
 <p><strong>要求：</strong> 解释为什么 <code>b</code> 的值没有发生变化。</p>
 <p><strong>预期输出结果：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行后 b 的值: 10</span><br></pre></td></tr></table></figure>
@@ -371,7 +371,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="6-ASCII-码与类型转换"><a href="#6-ASCII-码与类型转换" class="headerlink" title="6. ASCII 码与类型转换"></a>6. ASCII 码与类型转换</h2><ol>
+<h2 id="ASCII-码与类型转换"><a href="#ASCII-码与类型转换" class="headerlink" title="ASCII 码与类型转换"></a>ASCII 码与类型转换</h2><ol>
 <li><p><strong>关键 ASCII 码值</strong>：</p>
 <ul>
 <li><p><code>&#39;A&#39;</code> &#x3D; 65</p>
@@ -389,7 +389,7 @@
 </li>
 </ol>
 <hr>
-<h3 id="习题-6-对应：ASCII-码与字符计算"><a href="#习题-6-对应：ASCII-码与字符计算" class="headerlink" title="习题 6 (对应：ASCII 码与字符计算)"></a><strong>习题 6 (对应：ASCII 码与字符计算)</strong></h3><p><strong>题目：</strong> 编写程序，输入一个小写字母（如 ‘a’），将其转换为大写字母并输出。同时输出转换后的字符对应的 ASCII 码整数值。</p>
+<h3 id="习题-对应：ASCII-码与字符计算"><a href="#习题-对应：ASCII-码与字符计算" class="headerlink" title="习题 (对应：ASCII 码与字符计算)"></a><strong>习题 (对应：ASCII 码与字符计算)</strong></h3><p><strong>题目：</strong> 编写程序，输入一个小写字母（如 ‘a’），将其转换为大写字母并输出。同时输出转换后的字符对应的 ASCII 码整数值。</p>
 <p><strong>要求：</strong> 利用 <code>&#39;a&#39;</code> 和 <code>&#39;A&#39;</code> 之间的差值 (32) 进行计算。</p>
 <p><strong>预期输出结果：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入小写字母: a</span><br><span class="line">转换后的大写字母: A</span><br><span class="line">对应的 ASCII 码: 65</span><br></pre></td></tr></table></figure>
@@ -403,8 +403,8 @@
 <li>忘记 <code>&#39;A&#39;</code> 的 ASCII 码是 65，<code>&#39;a&#39;</code> 是 97。</li>
 </ol>
 <hr>
-<h2 id="7-字符与字符串的区别-单引号-vs-双引号-必考"><a href="#7-字符与字符串的区别-单引号-vs-双引号-必考" class="headerlink" title="7. 字符与字符串的区别 (单引号 vs 双引号) [必考]"></a>7. 字符与字符串的区别 (单引号 vs 双引号) <strong>[必考]</strong></h2><p>C 语言中，单引号和双引号绝对不能混用，它们的本质完全不同。</p>
-<h3 id="7-1-核心对比表"><a href="#7-1-核心对比表" class="headerlink" title="7.1 核心对比表"></a>7.1 核心对比表</h3><table>
+<h2 id="字符与字符串的区别-单引号-vs-双引号"><a href="#字符与字符串的区别-单引号-vs-双引号" class="headerlink" title="字符与字符串的区别 (单引号 vs 双引号)"></a>字符与字符串的区别 (单引号 vs 双引号)</h2><p>C 语言中，单引号和双引号绝对不能混用，它们的本质完全不同。</p>
+<h3 id="核心对比表"><a href="#核心对比表" class="headerlink" title="核心对比表"></a>核心对比表</h3><table>
 <thead>
 <tr>
 <th><strong>特性</strong></th>
@@ -438,7 +438,7 @@
 <td><strong>不能</strong> (<code>&quot;A&quot; + 1</code> 是非法指针运算)</td>
 </tr>
 </tbody></table>
-<h3 id="7-2-经典陷阱：’A’-和-“A”-的区别"><a href="#7-2-经典陷阱：’A’-和-“A”-的区别" class="headerlink" title="7.2 经典陷阱：’A’ 和 “A” 的区别"></a>7.2 经典陷阱：’A’ 和 “A” 的区别</h3><p>这是选择题最爱考的题目：</p>
+<h3 id="经典陷阱：’A’-和-“A”-的区别"><a href="#经典陷阱：’A’-和-“A”-的区别" class="headerlink" title="经典陷阱：’A’ 和 “A” 的区别"></a>经典陷阱：’A’ 和 “A” 的区别</h3><p>这是选择题最爱考的题目：</p>
 <ul>
 <li><p><strong><code>&#39;A&#39;</code></strong>：</p>
 <ul>
@@ -463,7 +463,7 @@
 <p>char c &#x3D; “A”; &#x2F;&#x2F; 错！不能把一个“字符串地址”硬塞给一个“字符变量”。</p>
 <p>char str[] &#x3D; ‘A’; &#x2F;&#x2F; 错！不能用单个字符去初始化数组（除非用花括号）。</p>
 <hr>
-<h3 id="习题-7-对应：单引号与双引号的区别"><a href="#习题-7-对应：单引号与双引号的区别" class="headerlink" title="习题 7 (对应：单引号与双引号的区别)"></a>习题 7 (对应：单引号与双引号的区别)</h3><p>题目： 编写程序，定义字符变量 c &#x3D; ‘A’ 和字符串数组 str &#x3D; “A”。</p>
+<h3 id="习题-对应：单引号与双引号的区别"><a href="#习题-对应：单引号与双引号的区别" class="headerlink" title="习题 (对应：单引号与双引号的区别)"></a>习题 (对应：单引号与双引号的区别)</h3><p>题目： 编写程序，定义字符变量 c &#x3D; ‘A’ 和字符串数组 str &#x3D; “A”。</p>
 <p>请通过 sizeof 运算符，分别打印它们在内存中占用的字节数，以验证 “A” 确实比 ‘A’ 多一个 \0。</p>
 <p><strong>要求：</strong></p>
 <ol>

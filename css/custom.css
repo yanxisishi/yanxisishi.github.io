@@ -77,3 +77,46 @@
    ========================================================= */
 body { font-family: -apple-system, "Microsoft YaHei", sans-serif !important; }
 code { font-family: 'JetBrains Mono', monospace !important; }
+
+/* =========================================================
+   【方案 A 专属】画廊瀑布流美化
+   ========================================================= */
+
+/* 1. 卡片圆角化与悬浮感 */
+#recent-posts > .recent-post-item {
+    border-radius: 16px !important; /* 大圆角 */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* 极细的玻璃边框 */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* 丝滑动画 */
+    overflow: visible !important; /* 允许悬浮溢出 */
+}
+
+/* 2. 鼠标悬停特效：整体上浮 + 底部投影 */
+#recent-posts > .recent-post-item:hover {
+    transform: translateY(-8px) scale(1.01) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35) !important;
+    z-index: 10;
+}
+
+/* 3. 封面图优化：保证不糊 */
+#recent-posts > .recent-post-item .post_cover img.post_bg {
+    border-radius: 16px 16px 0 0 !important; /* 只有上面圆角 */
+    filter: brightness(0.9); /* 默认稍微暗一点 */
+    transition: filter 0.4s;
+}
+#recent-posts > .recent-post-item:hover .post_cover img.post_bg {
+    filter: brightness(1.1); /* 悬停变亮 */
+}
+
+/* 4. 文章信息区域：精简 */
+.recent-post-info {
+    padding: 15px 20px !important;
+}
+/* 标题居中并加粗 */
+.recent-post-info .article-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+/* 隐藏摘要，只留标题和信息，让卡片更紧凑 (可选) */
+/* .recent-post-info .content { display: none; } */

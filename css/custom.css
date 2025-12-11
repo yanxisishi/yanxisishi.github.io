@@ -18,9 +18,15 @@
     background: rgba(255, 255, 255, 0.9);
 }
 
-/* 禁止头像在鼠标悬停时旋转 */
+/* === 彻底冻结头像 (包括平时和悬停) === */
+#aside-content .card-info .avatar-img {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important; /* 关键：关掉默认的动画循环 */
+}
 #aside-content .card-info .avatar-img:hover {
     transform: none !important;
+    animation: none !important;
 }
 
 /* === 博客大标题：英伦手写签名风 === */

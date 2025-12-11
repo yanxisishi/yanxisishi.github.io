@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C语言学习笔记01</title>
-    <url>/2025/12/09/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/</url>
-    <content><![CDATA[<h1 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h1><hr>
-<h2 id="C语言的第一个程序"><a href="#C语言的第一个程序" class="headerlink" title="C语言的第一个程序"></a>C语言的第一个程序</h2><table>
+    <title>1. C语言基础与数据</title>
+    <url>/2025/12/10/1.%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="第一章：C-语言基础与数据"><a href="#第一章：C-语言基础与数据" class="headerlink" title="第一章：C 语言基础与数据"></a>第一章：C 语言基础与数据</h1><hr>
+<h2 id="1-C-语言程序的最小结构"><a href="#1-C-语言程序的最小结构" class="headerlink" title="1. C 语言程序的最小结构"></a>1. C 语言程序的最小结构</h2><p>所有的 C 语言程序都始于一个核心结构。</p>
+<table>
 <thead>
 <tr>
 <th><strong>代码行</strong></th>
@@ -15,72 +16,75 @@
 <tbody><tr>
 <td><code>#include &lt;stdio.h&gt;</code></td>
 <td><strong>头文件包含</strong></td>
-<td>引入标准输入输出库（Standard Input&#x2F;Output）。<code>printf</code> 函数就定义在这个库中。<strong>没有它，你就不能在屏幕上打印任何东西。</strong></td>
+<td>引入标准输入输出库（Standard Input&#x2F;Output）。<code>printf</code> 函数就定义在这个库中。<strong>没有它，你就不能在屏幕上打印任何东西。</strong></td>
 </tr>
 <tr>
 <td><code>int main() { ... }</code></td>
 <td><strong>主函数定义</strong></td>
-<td><code>main</code> 是 C 程序的<strong>入口点</strong>。操作系统就是从这里开始执行你的程序的。<code>int</code> 表示这个函数执行完毕后会返回一个整数值。</td>
+<td><code>main</code> 是 C 程序的<strong>入口点</strong>。操作系统就是从这里开始执行你的程序的。<code>int</code> 表示这个函数执行完毕后会返回一个整数值。</td>
 </tr>
 <tr>
-<td><code>printf(&quot;Hello, World!\n&quot;);</code></td>
+<td><code>printf(&quot;...&quot;);</code></td>
 <td><strong>核心输出语句</strong></td>
-<td>调用 <code>printf</code> 函数，将括号内的字符串内容打印到屏幕上。<code>\n</code> 是一个<strong>转义字符</strong>，表示换行。</td>
+<td>调用 <code>printf</code> 函数，将括号内的字符串内容打印到屏幕上。<code>\n</code> 是一个<strong>转义字符</strong>，表示换行。</td>
 </tr>
 <tr>
 <td><code>return 0;</code></td>
 <td><strong>程序返回</strong></td>
-<td>告诉操作系统程序已经<strong>成功</strong>执行完毕。在 C 语言中，<code>return 0</code> 通常表示程序正常退出。</td>
+<td>告诉操作系统程序已经<strong>成功</strong>执行完毕。在 C 语言中，<code>return 0</code> 通常表示程序正常退出。</td>
 </tr>
 </tbody></table>
-<pre><code>#include &lt;stdio.h&gt;
-
-int main() {
-    printf(&quot;Hello, World!\n&quot;);
-    return 0;
-}
-</code></pre>
 <hr>
-<h2 id="基础入门与数据类型"><a href="#基础入门与数据类型" class="headerlink" title="基础入门与数据类型"></a>基础入门与数据类型</h2><ol>
-<li>程序的最小结构与入口所有的 C 语言程序都始于一个核心结构。</li>
-</ol>
-<ul>
-<li><p><strong>头文件包含 (<code>#include &lt;stdio.h&gt;</code>)</strong>: 引入标准输入&#x2F;输出库，让我们能使用 <code>printf</code> (输出) 和 <code>scanf</code> (输入) 等函数。</p>
+<h3 id="习题-1-对应：C-语言程序的最小结构"><a href="#习题-1-对应：C-语言程序的最小结构" class="headerlink" title="习题 1 (对应：C 语言程序的最小结构)"></a><strong>习题 1 (对应：C 语言程序的最小结构)</strong></h3><p><strong>题目：</strong> 请编写一个完整的 C 语言程序，在屏幕上打印输出字符串 <code>Hello, World!</code> 并换行。</p>
+<p><strong>要求：</strong> 包含必要的头文件，主函数结构完整，返回值正确。</p>
+<p><strong>预期输出结果</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello, World!</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, World!\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong> </p>
+<ol>
+<li><p>主函数最后要加上<code>return 0;</code></p>
 </li>
-<li><p><strong>主函数 (<code>int main()</code>)</strong>: 程序的执行入口。程序从这里开始，到 <code>return 0;</code> 结束。</p>
+<li><p>输出语句和返回语句后面的分号<code>;</code>不能少</p>
 </li>
-<li><p><code>int</code> 表示函数执行成功时返回一个整数值（通常是 <code>0</code>）。</p>
+</ol>
+<hr>
+<h2 id="2-标识符与命名规则-导师补充"><a href="#2-标识符与命名规则-导师补充" class="headerlink" title="2. 标识符与命名规则 (导师补充)"></a>2. 标识符与命名规则 (导师补充)</h2><p>在定义变量（如 <code>score</code>, <code>weight</code>）时，名字不能随便起。</p>
+<ol>
+<li><p><strong>组成</strong>：只能包含<strong>字母</strong> (A-Z, a-z)、<strong>数字</strong> (0-9)、<strong>下划线</strong> (<code>_</code>)。</p>
 </li>
-</ul>
-<ol start="2">
-<li>核心 I&#x2F;O 函数 (输入&#x2F;输出)</li>
+<li><p><strong>禁忌</strong>：<strong>不能以数字开头</strong>（如 <code>1st</code> 是错的）。</p>
+</li>
+<li><p><strong>避雷</strong>：不能是<strong>关键字</strong>（如 <code>int</code>, <code>return</code>, <code>if</code> 等）。</p>
+</li>
 </ol>
-<table>
-<thead>
-<tr>
-<th><strong>函数</strong></th>
-<th><strong>作用</strong></th>
-<th><strong>格式控制符</strong></th>
-<th><strong>示例</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>printf()</code></strong></td>
-<td><strong>输出</strong>数据到屏幕。</td>
-<td><code>%d</code> (整数), <code>%f</code> (浮点数), <code>%c</code> (字符), <code>%s</code> (字符串)</td>
-<td><code>printf(&quot;Age: %d&quot;, age);</code></td>
-</tr>
-<tr>
-<td><strong><code>scanf()</code></strong></td>
-<td><strong>接收</strong>用户从键盘的输入。</td>
-<td><code>%d</code>, <code>%f</code>, <code>%c</code>, <code>%s</code></td>
-<td><code>scanf(&quot;%d&quot;, &amp;age);</code></td>
-</tr>
-</tbody></table>
-<p>  <strong>重点提醒：</strong> 使用 <code>scanf</code> 读取变量时，除了字符串之外，<strong>变量名前面必须加 <code>&amp;</code> 符号</strong>（取地址符）。这是 C 语言中传址调用的基础</p>
-<ol start="3">
-<li>C 语言的基本数据类型数据类型决定了变量存储的数据种类和占用的内存空间大小。</li>
+<hr>
+<h3 id="习题-2-对应：标识符与命名规则"><a href="#习题-2-对应：标识符与命名规则" class="headerlink" title="习题 2 (对应：标识符与命名规则)"></a><strong>习题 2 (对应：标识符与命名规则)</strong></h3><p><strong>题目：</strong> 判断下列变量名是否合法。待判断变量名：</p>
+<ol>
+<li><p><code>2nd_score</code></p>
+</li>
+<li><p><code>total_sum</code></p>
+</li>
+<li><p><code>float</code></p>
+</li>
+<li><p><code>_user_id</code></p>
+</li>
 </ol>
+<p><strong>要求：</strong> 将合法的变量写出来。</p>
+<p><strong>答案：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 2nd_score</span><br><span class="line">   错误，不能以数字开头</span><br><span class="line">2. total_sum</span><br><span class="line">   正确</span><br><span class="line">3. float</span><br><span class="line">   错误，是关键字</span><br><span class="line">4. _user_id</span><br><span class="line">   正确 </span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>变量名不能包含减号 <code>-</code> (如 <code>total-sum</code> 是错的)。</p>
+</li>
+<li><p>即使是以 <code>_</code> 开头也是合法的，但不能以数字开头。</p>
+</li>
+</ol>
+<hr>
+<h2 id="3-基本数据类型"><a href="#3-基本数据类型" class="headerlink" title="3. 基本数据类型"></a>3. 基本数据类型</h2><p>数据类型决定了变量存储的数据种类和占用的内存空间大小。</p>
 <table>
 <thead>
 <tr>
@@ -115,116 +119,76 @@ int main() {
 <td><code>%c</code></td>
 </tr>
 </tbody></table>
+<p><strong>补充考点：</strong></p>
 <ul>
-<li><strong>变量定义：</strong> 在使用任何变量前，必须先定义它，例如：<code>int score;</code> 或 <code>float price = 10.5;</code></li>
-</ul>
-<ol start="4">
-<li><p>运算符 (Operators)</p>
+<li><p><strong><code>sizeof</code> 运算符</strong>：用于计算类型大小。例如 <code>sizeof(int)</code> 等于 4。</p>
 </li>
-<li><p>算术运算符用于数学计算。</p>
-</li>
-</ol>
-<pre><code>| **运算符** | **描述** | **示例** |
-| --- | --- | --- |
-| `+` | 加   | `a + b` |
-| `-` | 减   | `a - b` |
-| `*` | 乘   | `a * b` |
-| `/` | **除** | `a / b` |
-| `%` | **取余** (模运算) | `a % b` (只能用于整数) |
-
-**重点陷阱：** C 语言中的**整数除法** (`int / int`) 结果仍然是**整数**，会**舍弃小数部分**。
-
-* 例如：`int result = 10 / 3;` $\Rightarrow$ `result` 是 $3$ 而不是 $3.333$。
-  
-* 若想得到浮点结果，至少一个操作数必须是浮点类型：`10.0 / 3` 或 `(float)10 / 3`
-  
-</code></pre>
-<ol start="2">
-<li>关系运算符用于比较两个值，结果是<strong>真 (1)</strong> 或 <strong>假 (0)</strong>。</li>
-</ol>
-<pre><code>| **运算符** | **描述** |
-| --- | --- |
-| `&gt;` | 大于  |
-| `&lt;` | 小于  |
-| `&gt;=` | 大于等于 |
-| `&lt;=` | 小于等于 |
-| `==` | **等于** (注意是两个等号！) |
-| `!=` | 不等于 |
-</code></pre>
-<ol start="3">
-<li>逻辑运算符 用于组合多个关系表达式。</li>
-</ol>
-<pre><code>| **运算符** | **描述** |
-| --- | --- |
-| `&amp;&amp;` | **逻辑与 (AND)**：两边都为真才为真。 |
-| `   |     |
-| `!` | **逻辑非 (NOT)**：取反。 |
-</code></pre>
-<hr>
-<h2 id="练习-1：算术运算与类型转换"><a href="#练习-1：算术运算与类型转换" class="headerlink" title="练习 1：算术运算与类型转换"></a>练习 1：算术运算与类型转换</h2><p><strong>题目：</strong> 计算 10 和 3 的<strong>和、差、积</strong>，以及 10 除以 3 的<strong>整数商</strong>和<strong>浮点数商</strong>。</p>
-<p><strong>要求：</strong> 必须使用 <strong><code>int</code></strong>, <strong><code>float</code></strong> 或 <strong><code>double</code></strong> 至少三种数据类型来完成。</p>
-<p><strong>易错：</strong> C 语言中的<strong>整数除法</strong> (<code>int / int</code>) 结果仍然是<strong>整数</strong>，会<strong>舍弃小数部分</strong></p>
-<ul>
-<li><p>输出：</p>
-<pre><code>10 + 3 = 13
-10 - 3 = 7
-10 * 3 = 30
-10 / 3 的整数商是 3
-10 / 3 的浮点数商是： 3.333333
-</code></pre>
-</li>
-<li><p>我的：</p>
-<pre><code>#include &lt;stdio.h&gt;
-int main(){
-    int num1 = 10;
-    int num2 = 3;
-    float num3 = 10.0;
-
-    int a = num1 + num2;
-    int b = num1 - num2;
-    int c = num1 * num2;
-    int d = num1 / num2;
-    double e = num3 / num2;
-    printf(&quot;10 + 3 = %d\n&quot;, a);
-    printf(&quot;10 - 3 = %d\n&quot;, b);
-    printf(&quot;10 * 3 = %d\n&quot;, c);
-    printf(&quot;10 / 3 的整数商是 %d\n&quot;, d);
-    printf(&quot;10 / 3 的浮点数商是： %f\n&quot;, e);
-
-    return 0;
-
-}
-</code></pre>
-</li>
-<li><p>标准：</p>
-<pre><code>#include &lt;stdio.h&gt;
-
-int main() {
-    int num1 = 10;
-    int num2 = 3;
-
-    // 整数运算
-    int sum = num1 + num2;
-    int diff = num1 - num2;
-    int product = num1 * num2;
-    int int_quotient = num1 / num2; 
-
-    // 浮点数运算：使用强制类型转换
-    double float_quotient = (double)num1 / num2; 
-
-    printf(&quot;%d + %d = %d\n&quot;, num1, num2, sum);
-    printf(&quot;%d - %d = %d\n&quot;, num1, num2, diff);
-    printf(&quot;%d * %d = %d\n&quot;, num1, num2, product);
-    printf(&quot;%d / %d 的整数商是：%d\n&quot;, num1, num2, int_quotient);
-    printf(&quot;%d / %d 的浮点数商是：%.6lf\n&quot;, num1, num2, float_quotient);
-
-    return 0;
-}
-</code></pre>
+<li><p><strong>变量定义</strong>：在使用任何变量前，必须先定义它。例如：<code>int score;</code> 或 <code>float price = 10.5;</code></p>
 </li>
 </ul>
 <hr>
-<h3 id="练习-2：输入输出与变量"><a href="#练习-2：输入输出与变量" class="headerlink" title="练习 2：输入输出与变量"></a>练习 2：输入输出与变量</h3><p><strong>题目：</strong> 编写一个程序，要求用户输入他的<strong>学号 (整数)</strong> 和 <strong>体重 (浮点数)</strong>，然后程序将这两项信息打印出来。</p>
+<h3 id="习题-3-对应：基本数据类型"><a href="#习题-3-对应：基本数据类型" class="headerlink" title="习题 3 (对应：基本数据类型)"></a><strong>习题 3 (对应：基本数据类型)</strong></h3><p><strong>题目：</strong> 编写程序，定义以下 4 个变量并赋予初始值：</p>
+<ol>
+<li><p>整型 <code>age</code> &#x3D; 18</p>
+</li>
+<li><p>单精度浮点 <code>height</code> &#x3D; 175.5</p>
+</li>
+<li><p>双精度浮点 <code>pi</code> &#x3D; 3.1415926</p>
+</li>
+<li><p>字符型 <code>level</code> &#x3D; ‘A’然后将它们依次打印出来（中间用空格隔开）。</p>
+</li>
+</ol>
+<p><strong>要求：</strong> 必须使用正确的数据类型关键字和对应的格式控制符。</p>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">18 175.500000 3.141593 A</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> age = <span class="number">18</span>;</span><br><span class="line">    <span class="type">float</span> height = <span class="number">175.5</span>;</span><br><span class="line">    <span class="type">double</span> pi = <span class="number">3.1415926</span>;</span><br><span class="line">    <span class="type">char</span> level = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// %.6lf 是默认精度，题目未要求精度控制，默认即可</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %f %lf %c\n&quot;</span>, age, height, pi, level);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>字符常量必须用单引号 <code>&#39; &#39;</code>，不能用双引号。</p>
+</li>
+<li><p>定义变量时忘记初始化（虽不报错，但打印出来是乱码）。</p>
+</li>
+</ol>
+<hr>
+<h2 id="4-核心-I-O-函数-输入-输出"><a href="#4-核心-I-O-函数-输入-输出" class="headerlink" title="4. 核心 I&#x2F;O 函数 (输入&#x2F;输出)"></a>4. 核心 I&#x2F;O 函数 (输入&#x2F;输出)</h2><table>
+<thead>
+<tr>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>格式控制符</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong><code>printf()</code></strong></td>
+<td><strong>输出</strong>数据到屏幕。</td>
+<td><code>%d</code> (整数), <code>%f</code> (浮点数), <code>%c</code> (字符), <code>%s</code> (字符串)</td>
+<td><code>printf(&quot;Age: %d&quot;, age);</code></td>
+</tr>
+<tr>
+<td><strong><code>scanf()</code></strong></td>
+<td><strong>接收</strong>用户从键盘的输入。</td>
+<td><code>%d</code>, <code>%f</code>, <code>%c</code>, <code>%s</code></td>
+<td><code>scanf(&quot;%d&quot;, &amp;age);</code></td>
+</tr>
+</tbody></table>
+<p><strong>重点提醒 ：</strong> 使用 <code>scanf</code> 读取变量时，除了字符串之外，<strong>变量名前面必须加 <code>&amp;</code> 符号</strong>（取地址符）。这是 C 语言中传址调用的基础。，</p>
+<p><strong>补充细节：</strong></p>
+<ul>
+<li><p><strong><code>double</code> 的读写</strong>：</p>
+<ul>
+<li><p><code>printf</code> 输出时可以用 <code>%f</code> 或 <code>%lf</code>。</p>
+</li>
+<li><p><code>scanf</code> <strong>输入时必须用 <code>%lf</code></strong>，否则数据会出错。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="题-4-对应：核心-I-O-函数"><a href="#题-4-对应：核心-I-O-函数" class="headerlink" title="题 4 (对应：核心 I&#x2F;O 函数)"></a><strong>题 4 (对应：核心 I&#x2F;O 函数)</strong></h3><p><strong>题目：</strong> 编写一个程序，要求用户输入他的<strong>学号 (整数)</strong> 和 <strong>体重 (浮点数)</strong>，然后程序将这两项信息打印出来。</p>
 <p><strong>要求：</strong></p>
 <ol>
 <li><p>学号使用 <code>int</code> 类型，体重使用 <code>double</code> 类型。</p>
@@ -234,66 +198,296 @@ int main() {
 <li><p>输出体重时，要求<strong>保留两位小数</strong>。</p>
 </li>
 </ol>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">请输入你的学号: </span><br><span class="line">20251101</span><br><span class="line">请输入你的体重 (kg): </span><br><span class="line">72.5</span><br><span class="line">---你的信息是---</span><br><span class="line">学号: 20251101</span><br><span class="line">体重: 72.50 kg</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">    <span class="type">double</span> weight;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入你的学号: \n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;id);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入你的体重 (kg): \n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;weight); <span class="comment">// 重点：double 输入必须用 %lf</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;---你的信息是---\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;学号: %d\n&quot;</span>, id);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;体重: %.2lf kg\n&quot;</span>, weight); <span class="comment">// 重点：保留两位小数用 %.2lf</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>易错：</strong></p>
 <ol>
-<li><p>使用 <code>scanf</code> 读取普通变量（如 <code>int</code>, <code>double</code>）的值时，<strong>必须</strong>在变量名前加上 <strong><code>&amp;</code> 符号</strong>（取地址符）。</p>
+<li><p><code>scanf</code> 中变量名前忘记加 <code>&amp;</code>。</p>
 </li>
-<li><p>在 C 语言中，要控制浮点数（<code>float</code> 或 <code>double</code>）的输出精度，你需要在 <code>printf</code> 的格式控制符 <code>%f</code> 或 <code>%lf</code> 中间加入 <strong><code>.</code> 符号</strong>和所需的<strong>位数</strong>。</p>
+<li><p><code>scanf</code> 读取 <code>double</code> 时错误使用了 <code>%f</code>（会导致数据全部读错）。</p>
 </li>
 </ol>
+<hr>
+<h2 id="5-运算符"><a href="#5-运算符" class="headerlink" title="5. 运算符"></a>5. 运算符</h2><h3 id="5-1-算术运算符"><a href="#5-1-算术运算符" class="headerlink" title="5.1 算术运算符"></a>5.1 算术运算符</h3><p>用于数学计算。</p>
+<table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>+</code></td>
+<td>加</td>
+<td><code>a + b</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>减</td>
+<td><code>a - b</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>乘</td>
+<td><code>a * b</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td><strong>除</strong></td>
+<td><code>a / b</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td><strong>取余</strong> (模运算)</td>
+<td><code>a % b</code> (只能用于整数)</td>
+</tr>
+</tbody></table>
+<p>重点陷阱：</p>
+<p>C 语言中的整数除法 (int &#x2F; int) 结果仍然是整数，会舍弃小数部分。</p>
 <ul>
-<li><p>输出：</p>
-<pre><code>请输入你的学号: 
-20251101  &lt;-- 用户输入
-请输入你的体重 (kg): 
-72.5  &lt;-- 用户输入
---- 你的信息是 ---
-学号: 20251101
-体重: 72.50 kg
-</code></pre>
+<li><p>例如：<code>int result = 10 / 3;</code> $\Rightarrow$ <code>result</code> 是 $3$ 而不是 $3.333$。</p>
 </li>
-<li><p>我的：</p>
-<pre><code>#include &lt;stdio.h&gt;
-int main(){
-    int a;
-    double b;
-
-    printf(&quot;请输入你的学号:\n&quot;);
-    scanf(&quot;%d&quot;, &amp;a);
-    printf(&quot;请输入你的体重（kg）:\n&quot;);
-    scanf(&quot;%lf&quot;, &amp;b);
-
-    printf(&quot;---你的信息是---\n&quot;);
-    printf(&quot;学号：%d\n&quot;, a);
-    printf(&quot;体重：%.2lf kg\n&quot;, b);
-
-    return 0;
-}
-</code></pre>
+<li><p>若想得到浮点结果，至少一个操作数必须是浮点类型：<code>10.0 / 3</code> 或 <code>(float)10 / 3</code>。</p>
 </li>
-<li><p>标准：</p>
-<pre><code>#include &lt;stdio.h&gt;
-
-int main() {
-    int a;      // 学号，int 类型
-    double b;   // 体重，double 类型
-
-    printf(&quot;请输入你的学号: \n&quot;);
-    scanf(&quot;%d&quot;, &amp;a);
-
-    printf(&quot;请输入你的体重 (kg): \n&quot;);
-    scanf(&quot;%lf&quot;, &amp;b); // 修正: double 类型的读取格式符是 %lf
-
-    printf(&quot;---你的信息是---\n&quot;);
-    printf(&quot;学号: %d\n&quot;, a);
-    printf(&quot;体重: %.2lf kg\n&quot;, b); // 修正: double 类型的输出格式符是 %lf，并保留两位小数
-
-    return 0;
-}
-</code></pre>
+</ul>
+<h3 id="5-2-关系运算符"><a href="#5-2-关系运算符" class="headerlink" title="5.2 关系运算符"></a>5.2 关系运算符</h3><p>用于比较两个值，结果是 <strong>真 (1)</strong> 或 <strong>假 (0)</strong>。</p>
+<table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&gt;</code></td>
+<td>大于</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td><strong>等于</strong> (注意是两个等号！)</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>不等于</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-逻辑运算符"><a href="#5-3-逻辑运算符" class="headerlink" title="5.3 逻辑运算符"></a>5.3 逻辑运算符</h3><p>用于组合多个关系表达式。</p>
+<table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&amp;&amp;</code></td>
+<td><strong>逻辑与 (AND)</strong>：两边都为真才为真。</td>
+</tr>
+<tr>
+<td>&#96;|</td>
+<td>&#96;</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td><strong>逻辑非 (NOT)</strong>：取反。</td>
+</tr>
+</tbody></table>
+<p><strong>补充考点 (逻辑短路)：</strong></p>
+<ul>
+<li><p>对于 <code>&amp;&amp;</code>：如果左边是假 (0)，右边<strong>不会执行</strong>。</p>
+</li>
+<li><p>对于 <code>||</code>：如果左边是真 (非0)，右边<strong>不会执行</strong>。</p>
 </li>
 </ul>
 <hr>
+<h3 id="习题-5-1-对应：算术运算符"><a href="#习题-5-1-对应：算术运算符" class="headerlink" title="习题 5.1 (对应：算术运算符)"></a><strong>习题 5.1 (对应：算术运算符)</strong></h3><p><strong>题目：</strong> 计算 10 和 3 的<strong>和、差、积</strong>，以及 10 除以 3 的<strong>整数商</strong>和<strong>浮点数商</strong>。</p>
+<p><strong>要求：</strong></p>
+<ol>
+<li><p>必须使用 <code>int</code>, <code>float</code> 或 <code>double</code> 至少三种数据类型。</p>
+</li>
+<li><p>重点展示<strong>整数除法</strong>和<strong>浮点数除法</strong>的区别。</p>
+</li>
+</ol>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">10 + 3 = 13</span><br><span class="line">10 - 3 = 7</span><br><span class="line">10 * 3 = 30</span><br><span class="line">10 / 3 的整数商是：3</span><br><span class="line">10 / 3 的浮点数商是：3.333333</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>, b = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> sum = a + b;</span><br><span class="line">    <span class="type">int</span> diff = a - b;</span><br><span class="line">    <span class="type">int</span> product = a * b;</span><br><span class="line">    <span class="type">int</span> int_div = a / b;         <span class="comment">// 整数除法</span></span><br><span class="line">    <span class="type">double</span> float_div = (<span class="type">double</span>)a / b; <span class="comment">// 浮点除法（强制转换）</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;10 + 3 = %d\n&quot;</span>, sum);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;10 - 3 = %d\n&quot;</span>, diff);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;10 * 3 = %d\n&quot;</span>, product);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;10 / 3 的整数商是：%d\n&quot;</span>, int_div);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;10 / 3 的浮点数商是：%lf\n&quot;</span>, float_div);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>整数除以整数 (<code>10/3</code>) 结果会直接截断小数部分变成 <code>3</code>。</p>
+</li>
+<li><p>想要得到小数，必须让除号两边至少有一个是浮点数。</p>
+</li>
+</ol>
+<hr>
+<h3 id="习题-5-2-对应：关系运算符"><a href="#习题-5-2-对应：关系运算符" class="headerlink" title="习题 5.2 (对应：关系运算符)"></a><strong>习题 5.2 (对应：关系运算符)</strong></h3><p><strong>题目：</strong> 定义两个整数 <code>a = 5</code> 和 <code>b = 3</code>。请分别打印 <code>a &gt; b</code>, <code>a &lt; b</code>, <code>a == b</code> 的运算结果。</p>
+<p><strong>要求：</strong> 理解关系运算的结果本质上是整数 1 (真) 或 0 (假)。</p>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5 &gt; 3 的结果是: 1</span><br><span class="line">5 &lt; 3 的结果是: 0</span><br><span class="line">5 == 3 的结果是: 0</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">5</span>, b = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;5 &gt; 3 的结果是: %d\n&quot;</span>, a &gt; b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;5 &lt; 3 的结果是: %d\n&quot;</span>, a &lt; b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;5 == 3 的结果是: %d\n&quot;</span>, a == b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>判断相等必须用双等号 <code>==</code>，单等号 <code>=</code> 是赋值。</p>
+</li>
+<li><p>关系表达式的结果只有 0 和 1，不会输出 “True” 或 “False”。</p>
+</li>
+</ol>
+<hr>
+<h3 id="习题-5-3-对应：逻辑运算符"><a href="#习题-5-3-对应：逻辑运算符" class="headerlink" title="习题 5.3 (对应：逻辑运算符)"></a><strong>习题 5.3 (对应：逻辑运算符)</strong></h3><p><strong>题目：</strong> 验证逻辑运算的“短路”现象。定义 <code>int a = 0</code> 和 <code>int b = 10</code>。执行表达式 <code>(a != 0) &amp;&amp; (b++ &gt; 10)</code> 后，打印 <code>b</code> 的值。</p>
+<p><strong>要求：</strong> 解释为什么 <code>b</code> 的值没有发生变化。</p>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行后 b 的值: 10</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 逻辑与短路：因为 (a != 0) 为假，电脑直接判定结果为假</span></span><br><span class="line">    <span class="comment">// 后面的 (b++ &gt; 10) 根本不会被执行</span></span><br><span class="line">    <span class="keyword">if</span> ((a != <span class="number">0</span>) &amp;&amp; (b++ &gt; <span class="number">10</span>)) &#123;</span><br><span class="line">        <span class="comment">// 这里不会执行</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;执行后 b 的值: %d\n&quot;</span>, b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>误以为表达式里的代码一定会执行。</p>
+</li>
+<li><p><code>&amp;&amp;</code> 运算中，一旦左边为假 (0)，右边立即停止执行。</p>
+</li>
+</ol>
+<hr>
+<h2 id="6-ASCII-码与类型转换"><a href="#6-ASCII-码与类型转换" class="headerlink" title="6. ASCII 码与类型转换"></a>6. ASCII 码与类型转换</h2><ol>
+<li><p><strong>关键 ASCII 码值</strong>：</p>
+<ul>
+<li><p><code>&#39;A&#39;</code> &#x3D; 65</p>
+</li>
+<li><p><code>&#39;a&#39;</code> &#x3D; 97 (小写 &#x3D; 大写 + 32)</p>
+</li>
+<li><p><code>&#39;0&#39;</code> &#x3D; 48</p>
+</li>
+</ul>
+</li>
+<li><p><strong>自动类型转换</strong>：</p>
+<ul>
+<li>当 <code>int</code> 和 <code>double</code> 运算时，结果会自动变成 <code>double</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="习题-6-对应：ASCII-码与字符计算"><a href="#习题-6-对应：ASCII-码与字符计算" class="headerlink" title="习题 6 (对应：ASCII 码与字符计算)"></a><strong>习题 6 (对应：ASCII 码与字符计算)</strong></h3><p><strong>题目：</strong> 编写程序，输入一个小写字母（如 ‘a’），将其转换为大写字母并输出。同时输出转换后的字符对应的 ASCII 码整数值。</p>
+<p><strong>要求：</strong> 利用 <code>&#39;a&#39;</code> 和 <code>&#39;A&#39;</code> 之间的差值 (32) 进行计算。</p>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入小写字母: a</span><br><span class="line">转换后的大写字母: A</span><br><span class="line">对应的 ASCII 码: 65</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> small;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入小写字母: &quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>, &amp;small);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 小写转大写：减去 32</span></span><br><span class="line">    <span class="type">char</span> big = small - <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;转换后的大写字母: %c\n&quot;</span>, big);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;对应的 ASCII 码: %d\n&quot;</span>, big);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li>混淆大小写转换的加减方向（小转大是减，大转小是加）。</li>
+<li>忘记 <code>&#39;A&#39;</code> 的 ASCII 码是 65，<code>&#39;a&#39;</code> 是 97。</li>
+</ol>
+<hr>
+<h2 id="7-字符与字符串的区别-单引号-vs-双引号-必考"><a href="#7-字符与字符串的区别-单引号-vs-双引号-必考" class="headerlink" title="7. 字符与字符串的区别 (单引号 vs 双引号) [必考]"></a>7. 字符与字符串的区别 (单引号 vs 双引号) <strong>[必考]</strong></h2><p>C 语言中，单引号和双引号绝对不能混用，它们的本质完全不同。</p>
+<h3 id="7-1-核心对比表"><a href="#7-1-核心对比表" class="headerlink" title="7.1 核心对比表"></a>7.1 核心对比表</h3><table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>单引号 ‘ ‘</strong></th>
+<th><strong>双引号 “ “</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>对象</strong></td>
+<td><strong>字符常量</strong> (Character)</td>
+<td><strong>字符串字面量</strong> (String)</td>
+</tr>
+<tr>
+<td><strong>本质</strong></td>
+<td><strong>是一个整数</strong> (ASCII 码值)</td>
+<td><strong>是一个地址</strong> (指向内存中的数组)</td>
+</tr>
+<tr>
+<td><strong>大小 (以 ‘A’ 为例)</strong></td>
+<td>占 <strong>1</strong> 个字节 (存的是 65)</td>
+<td>占 <strong>2</strong> 个字节 (存的是 ‘A’ 和 ‘\0’)</td>
+</tr>
+<tr>
+<td><strong>示例</strong></td>
+<td><code>char c = &#39;A&#39;;</code></td>
+<td><code>char str[] = &quot;A&quot;;</code></td>
+</tr>
+<tr>
+<td><strong>能做加减法吗？</strong></td>
+<td><strong>能</strong> (<code>&#39;A&#39; + 1</code> 等于 66)</td>
+<td><strong>不能</strong> (<code>&quot;A&quot; + 1</code> 是非法指针运算)</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-经典陷阱：’A’-和-“A”-的区别"><a href="#7-2-经典陷阱：’A’-和-“A”-的区别" class="headerlink" title="7.2 经典陷阱：’A’ 和 “A” 的区别"></a>7.2 经典陷阱：’A’ 和 “A” 的区别</h3><p>这是选择题最爱考的题目：</p>
+<ul>
+<li><p><strong><code>&#39;A&#39;</code></strong>：</p>
+<ul>
+<li><p>它是单个字符。</p>
+</li>
+<li><p>在内存里就是数字 <strong>65</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p><strong><code>&quot;A&quot;</code></strong>：</p>
+<ul>
+<li><p>它是字符串。</p>
+</li>
+<li><p>虽然看起来只有一个字母，但 C 语言会自动在后面加一个结束符 <code>\0</code>。</p>
+</li>
+<li><p>所以在内存里它是：<code>&#39;A&#39;</code> + <code>\0&#39;</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>错误写法：</strong></p>
+<p>char c &#x3D; “A”; &#x2F;&#x2F; 错！不能把一个“字符串地址”硬塞给一个“字符变量”。</p>
+<p>char str[] &#x3D; ‘A’; &#x2F;&#x2F; 错！不能用单个字符去初始化数组（除非用花括号）。</p>
+<hr>
+<h3 id="习题-7-对应：单引号与双引号的区别"><a href="#习题-7-对应：单引号与双引号的区别" class="headerlink" title="习题 7 (对应：单引号与双引号的区别)"></a>习题 7 (对应：单引号与双引号的区别)</h3><p>题目： 编写程序，定义字符变量 c &#x3D; ‘A’ 和字符串数组 str &#x3D; “A”。</p>
+<p>请通过 sizeof 运算符，分别打印它们在内存中占用的字节数，以验证 “A” 确实比 ‘A’ 多一个 \0。</p>
+<p><strong>要求：</strong></p>
+<ol>
+<li><p>使用 <code>sizeof</code> 运算符。</p>
+</li>
+<li><p>理解为什么字符串的大小是 2。</p>
+</li>
+</ol>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">字符 &#x27;A&#x27; 的大小: 1</span><br><span class="line">字符串 &quot;A&quot; 的大小: 2</span><br></pre></td></tr></table></figure>
+
+<p><em>(注：在某些编译器下，sizeof(‘A’) 可能会显示 4，因为 C 语言将字符常量视为 int，但这里我们要验证的是它作为 char 存储时的概念，或者可以直接对比 sizeof(char变量) 和 sizeof(“A”)。为了不让你混淆，我们对比变量和字符串字面量)</em></p>
+<p><strong>修正后的严谨答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> c = <span class="string">&#x27;A&#x27;</span>;        <span class="comment">// 单引号：单个字符</span></span><br><span class="line">    <span class="comment">// char str[] = &quot;A&quot;; // 双引号：字符串 (包含 &#x27;A&#x27; 和 &#x27;\0&#x27;)</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// sizeof(c) 计算变量 c 占用的空间 -&gt; 1 字节</span></span><br><span class="line">    <span class="comment">// sizeof(&quot;A&quot;) 计算字符串 &quot;A&quot; 占用的空间 -&gt; 2 字节 (&#x27;A&#x27; + &#x27;\0&#x27;)</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符变量 c 的大小: %lu\n&quot;</span>, <span class="keyword">sizeof</span>(c));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符串 \&quot;A\&quot; 的大小: %lu\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="string">&quot;A&quot;</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>混淆概念，以为 <code>&quot;A&quot;</code> 也只占 1 个字节。</p>
+</li>
+<li><p>试图写 <code>char c = &quot;A&quot;;</code> 导致编译报错（类型不匹配）。</p>
+</li>
+<li><p>在 <code>printf</code> 里打印双引号需要转义：<code>\&quot;</code>。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>编程语言</category>
@@ -327,7 +521,7 @@ int main() {
 <li><p>清理、构建、部署：</p>
  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>]]></content>
       <categories>
         <category>博客搭建</category>
       </categories>
@@ -335,23 +529,5 @@ int main() {
         <tag>Hexo</tag>
         <tag>备忘录</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2025/12/08/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>

@@ -78,45 +78,80 @@
 body { font-family: -apple-system, "Microsoft YaHei", sans-serif !important; }
 code { font-family: 'JetBrains Mono', monospace !important; }
 
-/* =========================================================
-   【方案 A 专属】画廊瀑布流美化
-   ========================================================= */
+/* ==========================================================================
+   【终极魔改】Cyberpunk/Anime 沉浸式卡片流
+   ========================================================================== */
+@import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
 
-/* 1. 卡片圆角化与悬浮感 */
-#recent-posts > .recent-post-item {
-    border-radius: 16px !important; /* 大圆角 */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* 极细的玻璃边框 */
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* 丝滑动画 */
-    overflow: visible !important; /* 允许悬浮溢出 */
+/* 1. 强制变成卡片网格 (即使 Config 没生效，这行 CSS 也会尝试强制并排) */
+#recent-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-/* 2. 鼠标悬停特效：整体上浮 + 底部投影 */
-#recent-posts > .recent-post-item:hover {
-    transform: translateY(-8px) scale(1.01) !important;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35) !important;
-    z-index: 10;
+.recent-post-item {
+    width: 49% !important; /* 强制两列并排 */
+    display: flex !important;
+    flex-direction: column !important; /* 强制图在上，文在下 */
+    height: auto !important;
+    margin-top: 20px !important;
+    border-radius: 24px !important; /* 超大圆角 */
+    overflow: hidden !important;
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    position: relative;
 }
 
-/* 3. 封面图优化：保证不糊 */
-#recent-posts > .recent-post-item .post_cover img.post_bg {
-    border-radius: 16px 16px 0 0 !important; /* 只有上面圆角 */
-    filter: brightness(0.9); /* 默认稍微暗一点 */
-    transition: filter 0.4s;
-}
-#recent-posts > .recent-post-item:hover .post_cover img.post_bg {
-    filter: brightness(1.1); /* 悬停变亮 */
+/* 手机端恢复单列 */
+@media screen and (max-width: 768px) {
+    .recent-post-item { width: 100% !important; }
 }
 
-/* 4. 文章信息区域：精简 */
+/* 2. 封面图放大，不仅限于顶部，而是充满更多空间 */
+.recent-post-item .post_cover {
+    width: 100% !important;
+    height: 240px !important; /* 稍微调高，展示更多老婆图 */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* 底部切个斜角，更有设计感 */
+    transition: all 0.5s;
+}
+.recent-post-item .post_cover img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* 3. 文字区域重构 */
 .recent-post-info {
-    padding: 15px 20px !important;
+    padding: 15px 25px 25px !important;
+    width: 100% !important;
+    background: transparent !important; /* 透明背景 */
 }
-/* 标题居中并加粗 */
+
+/* 标题样式 */
 .recent-post-info .article-title {
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    text-align: center; /* 标题居中 */
     margin-bottom: 10px;
+    display: block;
+    color: inherit;
 }
-/* 隐藏摘要，只留标题和信息，让卡片更紧凑 (可选) */
-/* .recent-post-info .content { display: none; } */
+
+/* 隐藏摘要（只留标题和元数据，极简风） */
+.recent-post-info .content {
+    display: none !important; 
+}
+
+/* 4. 鼠标悬停特效 (核心) */
+.recent-post-item:hover {
+    transform: translateY(-10px) !important; /* 整体上浮 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+}
+.recent-post-item:hover .post_cover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 悬停时斜角变直 */
+    height: 260px !important; /* 图片变大 */
+}
+

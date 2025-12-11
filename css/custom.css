@@ -1,17 +1,15 @@
-/* =========================================================
-   1. 字体与大标题设置 (保持不变)
-   ========================================================= */
+/* 1. 引入字体 */
 @import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
 
+/* === 博客大标题 === */
 #site-title {
     font-family: 'Great Vibes', cursive !important;
-    font-size: 6rem !important; /* 稍微调小一点点，防止手机端撑爆 */
-    font-weight: 400 !important;
-    line-height: 1.2;
+    font-size: 6rem !important;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     padding-bottom: 10px;
 }
 
+/* === 副标题 === */
 #site-subtitle {
     font-family: "Microsoft YaHei", sans-serif !important;
     font-size: 1.5rem !important;
@@ -20,138 +18,48 @@
     text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
 }
 
-/* =========================================================
-   2. 【核心修复】智能透明卡片 (白天白，晚上黑)
-   ========================================================= */
-
-/* --- 情况 A：白天模式 (Light Mode) --- */
-/* 只有在 html 标签没有 data-theme='dark' 时才生效 */
+/* === 智能透明卡片 (修复黑屏的关键：只改颜色，不改布局) === */
 :root:not([data-theme="dark"]) #recent-posts > .recent-post-item,
 :root:not([data-theme="dark"]) #aside-content .card-widget,
 :root:not([data-theme="dark"]) .layout > div:first-child:not(.recent-posts),
-:root:not([data-theme="dark"]) #post,
-:root:not([data-theme="dark"]) .box-shadow-wrapper {
-    background: rgba(255, 255, 255, 0.9) !important; /* 强制白色 */
-    color: #4c4948 !important; /* 强制黑字 */
+:root:not([data-theme="dark"]) #post {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #4c4948 !important;
 }
 
-/* --- 情况 B：夜间模式 (Dark Mode) --- */
-/* 只有在 html 标签有 data-theme='dark' 时才生效 */
 [data-theme="dark"] #recent-posts > .recent-post-item,
 [data-theme="dark"] #aside-content .card-widget,
 [data-theme="dark"] .layout > div:first-child:not(.recent-posts),
-[data-theme="dark"] #post,
-[data-theme="dark"] .box-shadow-wrapper {
-    background: rgba(30, 30, 30, 0.85) !important; /* 强制深灰色，不透明度稍微高一点 */
-    color: #eeeeee !important; /* 强制白字 */
+[data-theme="dark"] #post {
+    background: rgba(30, 30, 30, 0.85) !important;
+    color: #eeeeee !important;
 }
 
-/* 修复夜间模式下链接颜色看不清的问题 */
+/* 修复夜间模式链接颜色 */
 [data-theme="dark"] #aside-content .card-widget a { color: #dddddd !important; }
 [data-theme="dark"] #aside-content .card-widget a:hover { color: #49b1f5 !important; }
 
-/* =========================================================
-   3. 【终极修复】彻底杀死头像旋转
-   ========================================================= */
-/* 我们把所有可能的选择器都写上，确保万无一失 */
-.avatar-img,
-#aside-content .card-info .avatar-img,
-.card-info-avatar .avatar-img {
+/* === 彻底冻结头像 === */
+.avatar-img {
     transition: none !important;
     transform: none !important;
     animation: none !important;
-    will-change: auto !important; /* 告诉浏览器别准备动画 */
 }
-
-/* 鼠标放上去也不许动 */
-.avatar-img:hover,
-#aside-content .card-info .avatar-img:hover,
-.card-info-avatar .avatar-img:hover {
+.avatar-img:hover {
     transform: none !important;
     animation: none !important;
-    transition: none !important;
 }
 
-/* =========================================================
-   4. 基础字体修正
-   ========================================================= */
-body { font-family: -apple-system, "Microsoft YaHei", sans-serif !important; }
-code { font-family: 'JetBrains Mono', monospace !important; }
-
-/* ==========================================================================
-   【终极魔改】Cyberpunk/Anime 沉浸式卡片流
-   ========================================================================== */
-@import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
-
-/* 1. 强制变成卡片网格 (即使 Config 没生效，这行 CSS 也会尝试强制并排) */
-#recent-posts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
+/* === 卡片美化 (圆角+悬浮) === */
+/* 给卡片加个大圆角，看起来像 app */
+#recent-posts > .recent-post-item,
+#aside-content .card-widget {
+    border-radius: 20px !important;
+    transition: transform 0.3s ease !important; /* 只保留悬浮动画 */
 }
 
-.recent-post-item {
-    width: 49% !important; /* 强制两列并排 */
-    display: flex !important;
-    flex-direction: column !important; /* 强制图在上，文在下 */
-    height: auto !important;
-    margin-top: 20px !important;
-    border-radius: 24px !important; /* 超大圆角 */
-    overflow: hidden !important;
-    border: none !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    position: relative;
+/* 鼠标放上去稍微浮起来一点点 */
+#recent-posts > .recent-post-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
 }
-
-/* 手机端恢复单列 */
-@media screen and (max-width: 768px) {
-    .recent-post-item { width: 100% !important; }
-}
-
-/* 2. 封面图放大，不仅限于顶部，而是充满更多空间 */
-.recent-post-item .post_cover {
-    width: 100% !important;
-    height: 240px !important; /* 稍微调高，展示更多老婆图 */
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* 底部切个斜角，更有设计感 */
-    transition: all 0.5s;
-}
-.recent-post-item .post_cover img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-/* 3. 文字区域重构 */
-.recent-post-info {
-    padding: 15px 25px 25px !important;
-    width: 100% !important;
-    background: transparent !important; /* 透明背景 */
-}
-
-/* 标题样式 */
-.recent-post-info .article-title {
-    font-size: 1.4rem !important;
-    font-weight: bold !important;
-    text-align: center; /* 标题居中 */
-    margin-bottom: 10px;
-    display: block;
-    color: inherit;
-}
-
-/* 隐藏摘要（只留标题和元数据，极简风） */
-.recent-post-info .content {
-    display: none !important; 
-}
-
-/* 4. 鼠标悬停特效 (核心) */
-.recent-post-item:hover {
-    transform: translateY(-10px) !important; /* 整体上浮 */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
-}
-.recent-post-item:hover .post_cover {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 悬停时斜角变直 */
-    height: 260px !important; /* 图片变大 */
-}
-

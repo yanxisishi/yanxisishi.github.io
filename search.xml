@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo命令与配置备忘录</title>
+    <url>/2025/12/09/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<blockquote>
+<p>这是一篇写给我自己的备忘录，记录了博客日常维护、写文章和修改配置的常用命令。</p>
+</blockquote>
+<h2 id="常用命令速查"><a href="#常用命令速查" class="headerlink" title="常用命令速查"></a>常用命令速查</h2><p>在终端进入博客目录 <code>~/Hello_CTF/my_ctf_blog</code> 后使用。</p>
+<h3 id="1-发布博客"><a href="#1-发布博客" class="headerlink" title="1. 发布博客"></a>1. 发布博客</h3><ol>
+<li><p>创建新的markdown文件：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;新的wp&quot;</span></span><br></pre></td></tr></table></figure>
+<p> 然后目录出现<code>新的wp.md</code></p>
+</li>
+<li><p>根据自身要求修改文件属性：</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 这里写文章标题            # 标题：随便写，支持中文</span><br><span class="line">date: 2025-12-09 18:00:00       # 发布时间：注意格式，冒号后有空格</span><br><span class="line">updated: 2025-12-10 12:00:00    # 更新时间：可选，不写默认等于发布时间</span><br><span class="line">tags:                           # 标签：扁平化，一篇可以有多个</span><br><span class="line"><span class="bullet">    -</span> CTF</span><br><span class="line"><span class="bullet">    -</span> Web</span><br><span class="line">categories:                     # 分类：层级化，支持父子关系</span><br><span class="line"><span class="bullet">    -</span> 学习笔记                   #父分类</span><br><span class="line"><span class="section">    - 渗透测试                   # 子分类</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<p> 注意事项：</p>
+<ul>
+<li>冒号后面必须有一个空格（比如 title: 标题 是对的，title:标题 是错的）。</li>
+<li>缩进：分类和标签的列表要对齐。</li>
+</ul>
+<p> 还有“特效”字段：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">cover: /img/封面图.png           # 首页卡片显示的封面图</span><br><span class="line">top<span class="emphasis">_img: /img/顶部图.png         # 点进文章后，顶部那个长条背景图</span></span><br><span class="line"><span class="emphasis">                                # (如果不写，默认显示你在 _</span>config.butterfly.yml 设置的那张 default<span class="emphasis">_top_</span>img)</span><br><span class="line"></span><br><span class="line">comments: true                  # 是否开启评论 (默认为 true，填 false 可关闭这篇的评论)</span><br><span class="line">toc: true                       # 是否显示右侧目录 (默认为 true)</span><br><span class="line">toc<span class="emphasis">_number: true                # 目录是否显示序号 (1. 1.1 ...)</span></span><br><span class="line"><span class="emphasis">copyright: true                 # 是否显示文末版权信息</span></span><br><span class="line"><span class="emphasis">---    </span></span><br></pre></td></tr></table></figure><br> 例如我想写c语言学习笔记：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: C语言学习笔记01</span><br><span class="line">date: 2025-12-09 20:00:00</span><br><span class="line">updated: 2025-12-09 20:00:00</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">-</span> 编程语言      </span><br><span class="line"><span class="bullet">-</span> C语言         </span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">-</span> C语言</span><br><span class="line">cover: /img/sg<span class="emphasis">_meter.jpg   </span></span><br><span class="line"><span class="emphasis">top_</span>img: /img/sg<span class="emphasis">_lab.jpg   </span></span><br><span class="line"><span class="emphasis">toc: true</span></span><br><span class="line"><span class="emphasis">toc_</span>number: true</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">正文...</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>清理、构建、部署：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>备忘录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1. C语言基础与数据</title>
     <url>/2025/12/10/1.%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h1 id="第一章：C-语言基础与数据"><a href="#第一章：C-语言基础与数据" class="headerlink" title="第一章：C 语言基础与数据"></a>第一章：C 语言基础与数据</h1><hr>
@@ -495,39 +528,6 @@
       </categories>
       <tags>
         <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo命令与配置备忘录</title>
-    <url>/2025/12/09/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<blockquote>
-<p>这是一篇写给我自己的备忘录，记录了博客日常维护、写文章和修改配置的常用命令。</p>
-</blockquote>
-<h2 id="常用命令速查"><a href="#常用命令速查" class="headerlink" title="常用命令速查"></a>常用命令速查</h2><p>在终端进入博客目录 <code>~/Hello_CTF/my_ctf_blog</code> 后使用。</p>
-<h3 id="1-发布博客"><a href="#1-发布博客" class="headerlink" title="1. 发布博客"></a>1. 发布博客</h3><ol>
-<li><p>创建新的markdown文件：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;新的wp&quot;</span></span><br></pre></td></tr></table></figure>
-<p> 然后目录出现<code>新的wp.md</code></p>
-</li>
-<li><p>根据自身要求修改文件属性：</p>
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 这里写文章标题            # 标题：随便写，支持中文</span><br><span class="line">date: 2025-12-09 18:00:00       # 发布时间：注意格式，冒号后有空格</span><br><span class="line">updated: 2025-12-10 12:00:00    # 更新时间：可选，不写默认等于发布时间</span><br><span class="line">tags:                           # 标签：扁平化，一篇可以有多个</span><br><span class="line"><span class="bullet">    -</span> CTF</span><br><span class="line"><span class="bullet">    -</span> Web</span><br><span class="line">categories:                     # 分类：层级化，支持父子关系</span><br><span class="line"><span class="bullet">    -</span> 学习笔记                   #父分类</span><br><span class="line"><span class="section">    - 渗透测试                   # 子分类</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
-<p> 注意事项：</p>
-<ul>
-<li>冒号后面必须有一个空格（比如 title: 标题 是对的，title:标题 是错的）。</li>
-<li>缩进：分类和标签的列表要对齐。</li>
-</ul>
-<p> 还有“特效”字段：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">cover: /img/封面图.png           # 首页卡片显示的封面图</span><br><span class="line">top<span class="emphasis">_img: /img/顶部图.png         # 点进文章后，顶部那个长条背景图</span></span><br><span class="line"><span class="emphasis">                                # (如果不写，默认显示你在 _</span>config.butterfly.yml 设置的那张 default<span class="emphasis">_top_</span>img)</span><br><span class="line"></span><br><span class="line">comments: true                  # 是否开启评论 (默认为 true，填 false 可关闭这篇的评论)</span><br><span class="line">toc: true                       # 是否显示右侧目录 (默认为 true)</span><br><span class="line">toc<span class="emphasis">_number: true                # 目录是否显示序号 (1. 1.1 ...)</span></span><br><span class="line"><span class="emphasis">copyright: true                 # 是否显示文末版权信息</span></span><br><span class="line"><span class="emphasis">---    </span></span><br></pre></td></tr></table></figure><br> 例如我想写c语言学习笔记：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: C语言学习笔记01</span><br><span class="line">date: 2025-12-09 20:00:00</span><br><span class="line">updated: 2025-12-09 20:00:00</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">-</span> 编程语言      </span><br><span class="line"><span class="bullet">-</span> C语言         </span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">-</span> C语言</span><br><span class="line">cover: /img/sg<span class="emphasis">_meter.jpg   </span></span><br><span class="line"><span class="emphasis">top_</span>img: /img/sg<span class="emphasis">_lab.jpg   </span></span><br><span class="line"><span class="emphasis">toc: true</span></span><br><span class="line"><span class="emphasis">toc_</span>number: true</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">正文...</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>清理、构建、部署：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>备忘录</tag>
       </tags>
   </entry>
 </search>

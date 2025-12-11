@@ -4,10 +4,10 @@
 /* === 博客大标题：Welcome To yanxi Blog === */
 #site-title {
     font-family: 'Great Vibes', cursive !important;
-    font-size: 7rem !important;      /* 从 5rem 调大到 7rem，足够震撼 */
+    font-size: 7rem !important;      /* 震撼大字号 */
     font-weight: 400 !important;
     line-height: 1.1;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* 阴影加重，增强立体感 */
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* 立体阴影 */
     margin-bottom: 0px;
     padding-bottom: 10px;
 }
@@ -15,15 +15,15 @@
 /* === 副标题：To Be Continued... === */
 #site-subtitle {
     font-family: "Microsoft YaHei", sans-serif !important;
-    font-size: 1.8rem !important;    /* 副标题也稍微大一点 */
-    letter-spacing: 3px;             /* 字母间距拉开，更有电影感 */
+    font-size: 1.8rem !important;
+    letter-spacing: 3px;             /* 电影感间距 */
     font-weight: bold;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
     opacity: 0.9;
     margin-top: 10px;
 }
 
-/* === 彻底冻结头像 === */
+/* === 彻底冻结头像 (防止旋转) === */
 #aside-content .card-info .avatar-img {
     transition: none !important;
     transform: none !important;
@@ -34,15 +34,38 @@
     animation: none !important;
 }
 
-/* === 透明卡片设置 (保持不变) === */
+/* ============================================================
+   👇👇👇 这里是修复重点：智能透明卡片 (自动适配白天/黑夜) 👇👇👇
+   ============================================================ */
+
+/* --- 白天模式：白底 + 深色文字 --- */
 #recent-posts > .recent-post-item,
 #aside-content .card-widget,
 .layout > div:first-child:not(.recent-posts),
 #post,
 .box-shadow-wrapper {
     background: rgba(255, 255, 255, 0.9) !important;
+    color: #4c4948 !important; /* 强制文字深色，防止看不清 */
 }
 
-/* === 字体修正 === */
+/* --- 夜间模式 (Dark Mode)：深灰底 + 浅色文字 --- */
+[data-theme="dark"] #recent-posts > .recent-post-item,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] .layout > div:first-child:not(.recent-posts),
+[data-theme="dark"] #post,
+[data-theme="dark"] .box-shadow-wrapper {
+    background: rgba(30, 30, 30, 0.8) !important; /* 换成深色半透明 */
+    color: #eeeeee !important; /* 文字变白 */
+}
+
+/* --- 修复夜间模式下侧边栏链接看不清的问题 --- */
+[data-theme="dark"] #aside-content .card-widget a {
+    color: #dddddd !important;
+}
+[data-theme="dark"] #aside-content .card-widget a:hover {
+    color: #49b1f5 !important; /* 鼠标悬停变蓝 */
+}
+
+/* === 字体修正 (正文用黑体，代码用等宽) === */
 body { font-family: -apple-system, "Microsoft YaHei", sans-serif !important; }
 code { font-family: 'JetBrains Mono', monospace !important; }

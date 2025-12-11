@@ -1,71 +1,79 @@
-/* 1. 引入字体 */
+/* =========================================================
+   1. 字体与大标题设置 (保持不变)
+   ========================================================= */
 @import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
 
-/* === 博客大标题：Welcome To yanxi Blog === */
 #site-title {
     font-family: 'Great Vibes', cursive !important;
-    font-size: 7rem !important;      /* 震撼大字号 */
+    font-size: 6rem !important; /* 稍微调小一点点，防止手机端撑爆 */
     font-weight: 400 !important;
-    line-height: 1.1;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* 立体阴影 */
-    margin-bottom: 0px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     padding-bottom: 10px;
 }
 
-/* === 副标题：To Be Continued... === */
 #site-subtitle {
     font-family: "Microsoft YaHei", sans-serif !important;
-    font-size: 1.8rem !important;
-    letter-spacing: 3px;             /* 电影感间距 */
+    font-size: 1.5rem !important;
+    letter-spacing: 2px;
     font-weight: bold;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-    opacity: 0.9;
-    margin-top: 10px;
 }
 
-/* === 彻底冻结头像 (防止旋转) === */
-#aside-content .card-info .avatar-img {
-    transition: none !important;
-    transform: none !important;
-    animation: none !important;
-}
-#aside-content .card-info .avatar-img:hover {
-    transform: none !important;
-    animation: none !important;
-}
+/* =========================================================
+   2. 【核心修复】智能透明卡片 (白天白，晚上黑)
+   ========================================================= */
 
-/* ============================================================
-   👇👇👇 这里是修复重点：智能透明卡片 (自动适配白天/黑夜) 👇👇👇
-   ============================================================ */
-
-/* --- 白天模式：白底 + 深色文字 --- */
-#recent-posts > .recent-post-item,
-#aside-content .card-widget,
-.layout > div:first-child:not(.recent-posts),
-#post,
-.box-shadow-wrapper {
-    background: rgba(255, 255, 255, 0.9) !important;
-    color: #4c4948 !important; /* 强制文字深色，防止看不清 */
+/* --- 情况 A：白天模式 (Light Mode) --- */
+/* 只有在 html 标签没有 data-theme='dark' 时才生效 */
+:root:not([data-theme="dark"]) #recent-posts > .recent-post-item,
+:root:not([data-theme="dark"]) #aside-content .card-widget,
+:root:not([data-theme="dark"]) .layout > div:first-child:not(.recent-posts),
+:root:not([data-theme="dark"]) #post,
+:root:not([data-theme="dark"]) .box-shadow-wrapper {
+    background: rgba(255, 255, 255, 0.9) !important; /* 强制白色 */
+    color: #4c4948 !important; /* 强制黑字 */
 }
 
-/* --- 夜间模式 (Dark Mode)：深灰底 + 浅色文字 --- */
+/* --- 情况 B：夜间模式 (Dark Mode) --- */
+/* 只有在 html 标签有 data-theme='dark' 时才生效 */
 [data-theme="dark"] #recent-posts > .recent-post-item,
 [data-theme="dark"] #aside-content .card-widget,
 [data-theme="dark"] .layout > div:first-child:not(.recent-posts),
 [data-theme="dark"] #post,
 [data-theme="dark"] .box-shadow-wrapper {
-    background: rgba(30, 30, 30, 0.8) !important; /* 换成深色半透明 */
-    color: #eeeeee !important; /* 文字变白 */
+    background: rgba(30, 30, 30, 0.85) !important; /* 强制深灰色，不透明度稍微高一点 */
+    color: #eeeeee !important; /* 强制白字 */
 }
 
-/* --- 修复夜间模式下侧边栏链接看不清的问题 --- */
-[data-theme="dark"] #aside-content .card-widget a {
-    color: #dddddd !important;
-}
-[data-theme="dark"] #aside-content .card-widget a:hover {
-    color: #49b1f5 !important; /* 鼠标悬停变蓝 */
+/* 修复夜间模式下链接颜色看不清的问题 */
+[data-theme="dark"] #aside-content .card-widget a { color: #dddddd !important; }
+[data-theme="dark"] #aside-content .card-widget a:hover { color: #49b1f5 !important; }
+
+/* =========================================================
+   3. 【终极修复】彻底杀死头像旋转
+   ========================================================= */
+/* 我们把所有可能的选择器都写上，确保万无一失 */
+.avatar-img,
+#aside-content .card-info .avatar-img,
+.card-info-avatar .avatar-img {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+    will-change: auto !important; /* 告诉浏览器别准备动画 */
 }
 
-/* === 字体修正 (正文用黑体，代码用等宽) === */
+/* 鼠标放上去也不许动 */
+.avatar-img:hover,
+#aside-content .card-info .avatar-img:hover,
+.card-info-avatar .avatar-img:hover {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* =========================================================
+   4. 基础字体修正
+   ========================================================= */
 body { font-family: -apple-system, "Microsoft YaHei", sans-serif !important; }
 code { font-family: 'JetBrains Mono', monospace !important; }

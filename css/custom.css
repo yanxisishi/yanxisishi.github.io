@@ -1,65 +1,78 @@
 /* 1. 引入字体 */
 @import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
 
-/* === 博客大标题 === */
+/* =========================================================
+   【核心修复】强制双列卡片布局 (基于 index_layout: 1)
+   ========================================================= */
+@media screen and (min-width: 768px) {
+    #recent-posts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .recent-post-item {
+        width: 49% !important; /* 强制两列 */
+        display: flex !important;
+        flex-direction: column !important; /* 图在上，文在下 */
+        height: auto !important;
+        margin-top: 20px !important;
+        border-radius: 15px !important;
+        overflow: hidden !important;
+    }
+    /* 封面图修正 */
+    .recent-post-item .post_cover {
+        width: 100% !important;
+        height: 220px !important;
+    }
+    .recent-post-item >.recent-post-info {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+}
+
+/* =========================================================
+   【左上角标题修复】用 CSS 暴力替换文字 (比 JS 稳)
+   ========================================================= */
+#site-name {
+    font-size: 0 !important; /* 隐藏原来的 Welcome To... */
+}
+#site-name::after {
+    content: "Yanxi Blog";  /* 这里写你想显示的短名字 */
+    font-size: 1.2rem !important; /* 恢复字体大小 */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* =========================================================
+   【样式美化】大标题 + 头像冻结 + 播放器
+   ========================================================= */
+
+/* 大标题 */
 #site-title {
     font-family: 'Great Vibes', cursive !important;
     font-size: 6rem !important;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-    padding-bottom: 10px;
 }
 
-/* === 副标题 === */
-#site-subtitle {
-    font-family: "Microsoft YaHei", sans-serif !important;
-    font-size: 1.5rem !important;
-    letter-spacing: 2px;
-    font-weight: bold;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-}
-
-/* === 智能透明卡片 (修复黑屏的关键：只改颜色，不改布局) === */
-:root:not([data-theme="dark"]) #recent-posts > .recent-post-item,
-:root:not([data-theme="dark"]) #aside-content .card-widget,
-:root:not([data-theme="dark"]) .layout > div:first-child:not(.recent-posts),
-:root:not([data-theme="dark"]) #post {
-    background: rgba(255, 255, 255, 0.9) !important;
-    color: #4c4948 !important;
-}
-
-[data-theme="dark"] #recent-posts > .recent-post-item,
-[data-theme="dark"] #aside-content .card-widget,
-[data-theme="dark"] .layout > div:first-child:not(.recent-posts),
-[data-theme="dark"] #post {
-    background: rgba(30, 30, 30, 0.85) !important;
-    color: #eeeeee !important;
-}
-
-/* 修复夜间模式链接颜色 */
-[data-theme="dark"] #aside-content .card-widget a { color: #dddddd !important; }
-[data-theme="dark"] #aside-content .card-widget a:hover { color: #49b1f5 !important; }
-
-/* === 彻底冻结头像 === */
+/* 彻底冻结头像 (针对 Butterfly 的 avatar_turn 动画) */
 .avatar-img {
-    transition: none !important;
+    animation: none !important; /* 核心 */
     transform: none !important;
-    animation: none !important;
+    transition: none !important;
 }
 .avatar-img:hover {
-    transform: none !important;
-    animation: none !important;
+    transform: none !important; /* 鼠标放上去也不许动 */
 }
 
-/* === 卡片美化 (圆角+悬浮) === */
-/* 给卡片加个大圆角，看起来像 app */
-#recent-posts > .recent-post-item,
-#aside-content .card-widget {
-    border-radius: 20px !important;
-    transition: transform 0.3s ease !important; /* 只保留悬浮动画 */
+/* 智能黑白卡片 (白天白，晚上黑) */
+:root:not([data-theme="dark"]) .recent-post-item,
+:root:not([data-theme="dark"]) #aside-content .card-widget {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #4c4948 !important;
 }
-
-/* 鼠标放上去稍微浮起来一点点 */
-#recent-posts > .recent-post-item:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] #aside-content .card-widget {
+    background: rgba(30, 30, 30, 0.85) !important;
+    color: #eee !important;
 }

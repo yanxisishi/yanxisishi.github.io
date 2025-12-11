@@ -1,30 +1,40 @@
-/* ⬇️⬇️⬇️ 1. 必须放在第一行：从云端下载 Great Vibes 签名体 ⬇️⬇️⬇️ */
+/* 1. 引入字体 */
 @import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
 
-/* === 2. 博客大标题：英伦手写签名风 (Great Vibes) === */
+/* === 博客大标题：Welcome To yanxi Blog === */
 #site-title {
-    font-family: 'Great Vibes', cursive !important; /* 应用签名体 */
-    font-size: 5rem !important;      /* 字号放大，手写体太小看不清 */
-    font-weight: 400 !important;     /* 去掉加粗，保持手写飘逸感 */
-    line-height: 1.2;                /* 调整行高，防止字母尾巴被切掉 */
+    font-family: 'Great Vibes', cursive !important;
+    font-size: 7rem !important;      /* 从 5rem 调大到 7rem，足够震撼 */
+    font-weight: 400 !important;
+    line-height: 1.1;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* 阴影加重，增强立体感 */
+    margin-bottom: 0px;
     padding-bottom: 10px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* 加上阴影，防止背景太花看不清字 */
-    margin-bottom: -10px;
 }
 
-/* === 3. 彻底冻结头像 (禁止任何旋转) === */
+/* === 副标题：To Be Continued... === */
+#site-subtitle {
+    font-family: "Microsoft YaHei", sans-serif !important;
+    font-size: 1.8rem !important;    /* 副标题也稍微大一点 */
+    letter-spacing: 3px;             /* 字母间距拉开，更有电影感 */
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* === 彻底冻结头像 === */
 #aside-content .card-info .avatar-img {
     transition: none !important;
     transform: none !important;
-    animation: none !important; /* 核心：关掉动画循环 */
+    animation: none !important;
 }
 #aside-content .card-info .avatar-img:hover {
     transform: none !important;
-    animation: none !important; /* 鼠标放上去也不许动 */
+    animation: none !important;
 }
 
-/* === 4. 全站卡片透明化 (0.9 = 90% 不透明) === */
-/* 首页文章、侧边栏、归档页背景 */
+/* === 透明卡片设置 (保持不变) === */
 #recent-posts > .recent-post-item,
 #aside-content .card-widget,
 .layout > div:first-child:not(.recent-posts),
@@ -33,12 +43,6 @@
     background: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* === 5. 正文和代码字体修正 === */
-/* 只有标题花哨，正文保持微软雅黑，易于阅读 */
-body {
-    font-family: -apple-system, "Microsoft YaHei", sans-serif !important;
-}
-/* CTF 选手必备：代码块强制使用等宽字体 */
-code {
-    font-family: 'JetBrains Mono', monospace !important;
-}
+/* === 字体修正 === */
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif !important; }
+code { font-family: 'JetBrains Mono', monospace !important; }

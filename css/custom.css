@@ -167,19 +167,23 @@
 }
 
 /* =========================================================
-   8. 找回英伦风字体 (应用到标题)
+   8. 字体与标题精修 (修改版)
    ========================================================= */
-#site-title, #site-subtitle {
-    font-family: 'Great Vibes', cursive !important;
-    font-weight: normal !important; /* 让字体不那么粗，更优雅 */
-}
 
-/* 如果觉得标题太小，可以加大一点 */
+/* 1. 主标题：保持英伦风，但要变得更大 */
 #site-title {
-    font-size: 2.5em !important; /* 调整标题大小 */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 加一点阴影更清晰 */
+    font-family: 'Great Vibes', cursive !important;
+    font-size: 4.5em !important; /* 之前是 2.5em，现在加大到 4.5em */
+    font-weight: normal !important;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6); /* 加重阴影，更有质感 */
+    margin-bottom: 10px !important;
 }
 
+/* 2. 副标题：恢复正常字体，不要英伦风 */
 #site-subtitle {
-    font-size: 1.5em !important; /* 调整副标题大小 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+    font-size: 1.5rem !important;
+    letter-spacing: 2px; /* 稍微把字间距拉开一点，好看 */
+    font-weight: bold !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }

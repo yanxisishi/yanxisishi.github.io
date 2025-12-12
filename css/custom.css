@@ -165,3 +165,21 @@
     transform: none !important; /* 取消居中，固定左下角 */
     justify-content: flex-start !important;
 }
+
+/* =========================================================
+   8. 找回英伦风字体 (应用到标题)
+   ========================================================= */
+#site-title, #site-subtitle {
+    font-family: 'Great Vibes', cursive !important;
+    font-weight: normal !important; /* 让字体不那么粗，更优雅 */
+}
+
+/* 如果觉得标题太小，可以加大一点 */
+#site-title {
+    font-size: 2.5em !important; /* 调整标题大小 */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 加一点阴影更清晰 */
+}
+
+#site-subtitle {
+    font-size: 1.5em !important; /* 调整副标题大小 */
+}

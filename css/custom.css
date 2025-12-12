@@ -187,3 +187,54 @@
     font-weight: bold !important;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
+
+/* =========================================================
+   9. 全局毛玻璃 (Glassmorphism) 与 悬浮卡片特效
+   ========================================================= */
+
+/* --- 1. 定义透明度变量 (方便以后想改深浅直接改这里) --- */
+:root {
+  --trans-light: rgba(255, 255, 255, 0.85); /* 日间模式：85% 不透明白 */
+  --trans-dark: rgba(35, 35, 35, 0.85);     /* 夜间模式：85% 不透明黑 */
+  --backdrop-blur: 10px;                    /* 模糊程度：越大约模糊 */
+}
+
+/* --- 2. 应用透明背景 (文章卡片、侧边栏、独立页面) --- */
+#aside-content .card-widget,         /* 侧边栏卡片 */
+.recent-post-item,                   /* 首页文章卡片 */
+#post,                               /* 文章详情页背景 */
+.page-template,                      /* 普通页面背景 */
+#manual-swiper-container             /* 我们刚才手搓的轮播图 */
+{
+    background: var(--trans-light) !important;
+    backdrop-filter: blur(var(--backdrop-blur)); /* 关键：背景模糊滤镜 */
+    -webkit-backdrop-filter: blur(var(--backdrop-blur)); /* 兼容苹果Safari */
+}
+
+/* 夜间模式下的透明度适配 */
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] #post,
+[data-theme="dark"] .page-template,
+[data-theme="dark"] #manual-swiper-container
+{
+    background: var(--trans-dark) !important;
+}
+
+/* --- 3. 悬浮呼吸特效 (Hover Effects) --- */
+/* 当鼠标悬停在文章卡片或侧边栏上时 */
+.recent-post-item:hover,
+#aside-content .card-widget:hover,
+#manual-swiper-container:hover {
+    transform: translateY(-5px) scale(1.01); /* 稍微上浮并放大一点点 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important; /* 阴影加深，营造立体感 */
+    transition: all 0.3s ease-in-out; /* 丝滑过渡 */
+    z-index: 10;
+}
+
+/* --- 4. 优化文章内部文字阅读体验 --- */
+/* 防止背景太花导致文字看不清，正文区域颜色稍微加深一点 */
+#article-container {
+    background: transparent; 
+}
+

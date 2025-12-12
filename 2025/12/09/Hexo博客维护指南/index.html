@@ -161,7 +161,41 @@
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/css/custom.css"><link href="https://fonts.loli.net/css2?family=Great+Vibes&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
-  /* --- 滚动条与选中色 --- */
+  /* ====================
+     ⚛️ 1. Loading 动画魔改: 初音反应堆
+     ==================== */
+  /* 隐藏原本的背景色，防止看着像方块 */
+  .configure-border-1, .configure-border-2 {
+      background: transparent !important;
+  }
+  
+  /* 核心样式：把方块变成发光的圆环 */
+  .configure-core {
+      background-color: transparent !important;
+  }
+  .configure-border-1 {
+      border: 4px solid #39c5bb !important; /* 初音绿边框 */
+      border-radius: 50% !important;        /* 变成圆 */
+      box-shadow: 0 0 15px #39c5bb, inset 0 0 15px #39c5bb !important; /* 内外发光特效 */
+      transform: rotate(45deg); /* 初始角度 */
+      animation: configure-clockwise 3s ease-in-out infinite alternate !important; /* 调整转速 */
+  }
+  .configure-border-2 {
+      border: 4px solid #fff !important;    /* 白色内环 */
+      border-radius: 50% !important;
+      box-shadow: 0 0 10px #fff, inset 0 0 10px #fff !important; /* 白色发光 */
+      transform: rotate(45deg);
+      animation: configure-xclockwise 3s ease-in-out infinite alternate !important;
+  }
+  
+  /* 加载页面的背景色 (稍微深一点，让发光更明显) */
+  #loading-box {
+      background: #121212 !important; 
+  }
+
+  /* ====================
+     🎨 2. 全局 UI 细节
+     ==================== */
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #39c5bb; border-radius: 5px; }
@@ -169,18 +203,18 @@
   ::selection { background: #39c5bb; color: #fff; }
   ::-moz-selection { background: #39c5bb; color: #fff; }
 
-  /* --- 播放器与歌词 --- */
+  /* ====================
+     🛠️ 3. 组件修复 & 看板娘
+     ==================== */
   .aplayer-fixed { z-index: 999999 !important; display: block !important; }
   .aplayer-lrc { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; height: 30px !important; overflow: hidden !important; background: rgba(0, 0, 0, 0.4) !important; z-index: 999998 !important; pointer-events: none !important; }
   .aplayer-lrc p { color: rgba(255, 255, 255, 0.6) !important; font-family: 'Microsoft YaHei', sans-serif !important; font-size: 14px !important; line-height: 30px !important; text-shadow: 1px 1px 1px #000 !important; margin: 0 !important; }
   .aplayer-lrc-current { color: #39c5bb !important; font-weight: bold !important; opacity: 1 !important; font-size: 15px !important; }
 
-  /* --- 轮播图样式 --- */
   #manual-swiper-container { width: 100%; height: 280px; margin-bottom: 20px; border-radius: 12px; overflow: hidden; background: transparent; }
   #manual-swiper-container h2, #manual-swiper-container p { color: #ffffff !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.9) !important; }
   .home-swiper-card { width: 100% !important; margin-bottom: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 
-  /* --- 波浪特效 --- */
   #waves { width: 100%; height: 15vh; margin-bottom: -10px; min-height: 100px; max-height: 150px; position: absolute; bottom: 0; left: 0; z-index: 10; pointer-events: none; }
   .parallax > use { animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite; }
   .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; fill: rgba(255, 255, 255, 0.7); }
@@ -190,14 +224,7 @@
   [data-theme="dark"] .parallax > use:nth-child(4) { fill: #121212; } 
   @keyframes move-forever { 0% { transform: translate3d(-90px, 0, 0); } 100% { transform: translate3d(85px, 0, 0); } }
 
-  /* --- 小埋位置 (左下角，悬浮在播放器上方) --- */
-  #live2dcanvas {
-      left: 5px !important;       
-      right: auto !important;     
-      bottom: 90px !important;    
-      z-index: 999 !important;    
-      pointer-events: auto !important;
-  }
+  #live2dcanvas { left: 5px !important; right: auto !important; bottom: 90px !important; z-index: 999 !important; pointer-events: auto !important; }
   @media screen and (max-width: 768px) { #live2dcanvas { display: none !important; } }
 </style>
 <link rel="stylesheet" href="https://npm.elemecdn.com/swiper@8/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{

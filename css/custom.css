@@ -4,7 +4,62 @@
 @import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
 
 /* =========================================================
-   2. 强制双列卡片布局 (修复排版)
+   2. 核心修复：统一全屏"黑纱" (解决割裂感)
+   ========================================================= */
+
+/* 2.1 设置背景图 + 全局黑纱 */
+#web_bg {
+    background-image: url('/img/bg.png') !important; 
+    background-attachment: fixed !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    z-index: -999;
+}
+
+/* 这就是你要的那层"黑纱"，它现在覆盖在全屏背景图上，而不再是只在顶部 */
+#web_bg::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4) !important; /* 0.4 是黑纱浓度，想黑一点就改 0.6 */
+    display: block !important;
+    z-index: -1;
+}
+
+/* 2.2 彻底移除主题自带的"顶部黑条" */
+/* 这一步非常关键，把那条黑线的罪魁祸首杀掉 */
+#page-header {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+#page-header::before {
+    display: none !important; /* 关掉顶部独立的遮罩 */
+}
+
+/* 2.3 导航栏透明化 */
+#nav {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+/* 滚动后稍微显示一点底色，防止菜单看不清，如果不想要可以删掉 */
+#nav.show {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(5px);
+}
+
+/* =========================================================
+   3. 布局容器透明化 (防止出现黑色色块)
+   ========================================================= */
+#content-inner, #page, #body-wrap, .layout {
+    background: transparent !important;
+}
+
+/* =========================================================
+   4. 双列卡片布局 (保持你的排版)
    ========================================================= */
 @media screen and (min-width: 768px) {
     #recent-posts {
@@ -19,91 +74,53 @@
         flex-direction: column !important;
         height: auto !important;
         margin-top: 20px !important;
-        border-radius: 15px !important;
         overflow: hidden !important;
+        border-radius: 15px !important;
     }
     .recent-post-item .post_cover {
         width: 100% !important;
         height: 220px !important;
     }
-    .recent-post-item >.recent-post-info {
-        width: 100% !important;
-        padding: 20px !important;
-    }
 }
 
 /* =========================================================
-   3. 左上角标题修复
+   5. 卡片样式 (在黑纱之上，保持通透)
    ========================================================= */
-#site-name { font-size: 0 !important; }
-#site-name::after {
-    content: "Yanxi Blog";  
-    font-size: 1.2rem !important;
-    display: inline-block;
-    vertical-align: middle;
+/* 这里的策略是：因为背景已经变黑了，卡片稍微白一点点，形成对比 */
+
+/* 白天模式卡片 */
+:root:not([data-theme="dark"]) .recent-post-item,
+:root:not([data-theme="dark"]) #aside-content .card-widget,
+:root:not([data-theme="dark"]) #footer {
+    background: rgba(255, 255, 255, 0.7) !important; /* 稍微白一点，字才看得清 */
+    backdrop-filter: blur(10px); 
+    border-radius: 15px;
+}
+
+/* 夜间模式卡片 */
+[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] #footer {
+    background: rgba(0, 0, 0, 0.5) !important; 
+    backdrop-filter: blur(10px);
+    color: #eee !important;
+    border-radius: 15px;
 }
 
 /* =========================================================
-   4. 样式美化 (标题+头像)
+   6. 其他美化
    ========================================================= */
 #site-title {
     font-family: 'Great Vibes', cursive !important;
     font-size: 6rem !important;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    /* 既然背景黑了，标题就用纯白，加一点点发光 */
+    text-shadow: 0 0 10px rgba(255,255,255,0.3) !important;
+    color: #fff !important;
 }
-.avatar-img {
-    animation: none !important;
-    transform: none !important;
-    transition: none !important;
+#site-name { font-size: 0 !important; }
+#site-name::after {
+    content: "Yanxi Blog";  
+    font-size: 1.2rem !important;
+    vertical-align: middle;
 }
-
-/* =========================================================
-   5. 背景图强制修复 (解决黑屏问题)
-   ========================================================= */
-#web_bg {
-    /* 强制指定背景图路径，防止配置失效 */
-    background-image: url('/img/bg.png') !important; 
-    background-attachment: fixed !important;
-    background-position: center center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    z-index: -999; /* 确保在最底层 */
-    background-color: transparent !important; /* 禁止黑色背景色 */
-}
-
-/* 暗黑模式下，也强制显示背景图，不显示纯黑 */
-[data-theme="dark"] #web_bg {
-    background-image: url('/img/bg.png') !important;
-    background-color: transparent !important;
-}
-/* 这里的伪元素有时候会遮挡背景，强制去掉 */
-#web_bg::before {
-    background-color: transparent !important;
-    background-image: none !important;
-}
-
-/* =========================================================
-   6. 卡片透明化 (让背景图透出来)
-   ========================================================= */
-/* 白天模式 */
-:root:not([data-theme="dark"]) .recent-post-item,
-:root:not([data-theme="dark"]) #aside-content .card-widget,
-:root:not([data-theme="dark"]) #footer {
-    background: rgba(255, 255, 255, 0.6) !important;
-    backdrop-filter: blur(10px); 
-}
-
-/* 夜间模式 - 关键修复 */
-[data-theme="dark"] .recent-post-item,
-[data-theme="dark"] #aside-content .card-widget,
-[data-theme="dark"] #footer {
-    /* 这里设置 0.5 的透明度，不再是黑板了 */
-    background: rgba(0, 0, 0, 0.5) !important; 
-    backdrop-filter: blur(10px);
-    color: #eee !important;
-}
-
-/* 消除中间层的背景色 */
-#content-inner, #page, #body-wrap, .layout {
-    background: transparent !important;
-}
+.avatar-img { animation: none !important; transform: none !important; }

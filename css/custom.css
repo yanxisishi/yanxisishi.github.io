@@ -238,3 +238,21 @@
     background: transparent; 
 }
 
+/* =========================================================
+   9. 字体隔离修复 (只留大标题英伦风，其他全部还原)
+   ========================================================= */
+
+/* 1. 强制文章标题、分类标题、卡片标题使用标准黑体 */
+#post-info .post-title,            /* 文章详情页的大标题 */
+.recent-post-item .article-title,  /* 首页列表里的文章标题 */
+#page-title,                       /* 页面中间的分类标题 (如"编程语言") */
+.site-name,                        /* 左上角导航栏的站名 */
+h1, h2, h3, h4, h5, h6             /* 所有普通标题 */
+{
+    font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif !important;
+}
+
+/* 2. 确保那个最大的标题依然是英伦风 (保持不变) */
+#site-title {
+    font-family: 'Great Vibes', cursive !important;
+}

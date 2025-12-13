@@ -1,258 +1,108 @@
-/* =========================================================
-   1. 字体引入 (保持不变)
-   ========================================================= */
-@import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
-
-/* =========================================================
-   2. 基础布局修复 (不准乱改宽度)
-   ========================================================= */
-/* 限制最大宽度，防止大屏幕太散 */
-.layout {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
+/* =================================================================
+   1. 字体设置 (Font Settings)
+   ================================================================= */
+@font-face {
+  font-family: 'PingFang SC';
+  src: local('PingFang SC'), local('Microsoft YaHei');
+  font-display: swap;
 }
 
-/* =========================================================
-   3. 修复日间模式与夜间模式 (关键修复！)
-   ========================================================= */
-/* 日间模式 (默认)：保持主题原样，不强制变黑 */
-
-/* 夜间模式 [data-theme="dark"]：只有在夜间模式下才应用深色 */
-[data-theme="dark"] body {
-    background-color: #121212 !important;
+/* 全局默认字体 */
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
 }
 
-[data-theme="dark"] .card-widget,
-[data-theme="dark"] .recent-post-item {
-    background: #1f1f1f !important;
-    color: #f0f0f0 !important;
-    border: 1px solid #333 !important;
+/* 代码字体 */
+code, pre, .highlight {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
 }
 
-/* =========================================================
-   4. 头像修复 (大小适中，禁止旋转)
-   ========================================================= */
-#aside-content .card-info .avatar-img {
-    width: 110px !important;  /* 稍微改小一点，精致 */
-    height: 110px !important;
-    margin: 0 auto 10px auto !important;
-    border-radius: 50% !important; /* 如果喜欢圆的就保留这个，喜欢方的改成 10px */
-    transform: none !important;    /* 禁止旋转 */
-    transition: none !important;   /* 禁止动画 */
-    animation: none !important;
+/* 【新增】强制修复：内部页面的大标题（如"比赛WP"）使用正常字体 */
+#page-title {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+  font-weight: bold; /* 加粗一点，更清晰 */
 }
 
-/* =========================================================
-   5. 彻底删除“小喇叭”
-   ========================================================= */
-/* 隐藏公告栏里的喇叭图标 */
-.card-announcement i.fa-bullhorn,
-.card-announcement .b-aa-shake {
-    display: none !important;
-}
-
-/* 如果你觉得“公告”两个字也不顺眼，把下面这行注释去掉： */
-/* .card-announcement .item-headline { display: none !important; } */
-
-/* =========================================================
-   6. 修复页脚 (Footer) 格格不入的问题
-   ========================================================= */
-#footer {
-    background: transparent !important;
-    margin-top: 0 !important;
-}
-#footer::before {
-    background: transparent !important;
-}
-/* 夜间模式下页脚文字颜色 */
-[data-theme="dark"] #footer-wrap {
-    color: #666 !important;
-}
-
-/* =========================================================
-   7. 复制反馈 Snackbar (左下角小黑框)
-   ========================================================= */
-.snackbar-container {
-    background: #333 !important;
-    color: #fff !important;
-    border-left: 4px solid #39c5bb !important; /* 初音绿 */
-    border-radius: 4px !important;
-    bottom: 20px !important;
-    left: 20px !important;
-    transform: none !important; /* 取消居中，固定左下角 */
-    justify-content: flex-start !important;
-}/* =========================================================
-   1. 字体引入 (保持不变)
-   ========================================================= */
-@import url('https://fonts.loli.net/css2?family=Great+Vibes&display=swap');
-
-/* =========================================================
-   2. 基础布局修复 (不准乱改宽度)
-   ========================================================= */
-/* 限制最大宽度，防止大屏幕太散 */
-.layout {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
-
-/* =========================================================
-   3. 修复日间模式与夜间模式 (关键修复！)
-   ========================================================= */
-/* 日间模式 (默认)：保持主题原样，不强制变黑 */
-
-/* 夜间模式 [data-theme="dark"]：只有在夜间模式下才应用深色 */
-[data-theme="dark"] body {
-    background-color: #121212 !important;
-}
-
-[data-theme="dark"] .card-widget,
-[data-theme="dark"] .recent-post-item {
-    background: #1f1f1f !important;
-    color: #f0f0f0 !important;
-    border: 1px solid #333 !important;
-}
-
-/* =========================================================
-   4. 头像修复 (大小适中，禁止旋转)
-   ========================================================= */
-#aside-content .card-info .avatar-img {
-    width: 110px !important;  /* 稍微改小一点，精致 */
-    height: 110px !important;
-    margin: 0 auto 10px auto !important;
-    border-radius: 50% !important; /* 如果喜欢圆的就保留这个，喜欢方的改成 10px */
-    transform: none !important;    /* 禁止旋转 */
-    transition: none !important;   /* 禁止动画 */
-    animation: none !important;
-}
-
-/* =========================================================
-   5. 彻底删除“小喇叭”
-   ========================================================= */
-/* 隐藏公告栏里的喇叭图标 */
-.card-announcement i.fa-bullhorn,
-.card-announcement .b-aa-shake {
-    display: none !important;
-}
-
-/* 如果你觉得“公告”两个字也不顺眼，把下面这行注释去掉： */
-/* .card-announcement .item-headline { display: none !important; } */
-
-/* =========================================================
-   6. 修复页脚 (Footer) 格格不入的问题
-   ========================================================= */
-#footer {
-    background: transparent !important;
-    margin-top: 0 !important;
-}
-#footer::before {
-    background: transparent !important;
-}
-/* 夜间模式下页脚文字颜色 */
-[data-theme="dark"] #footer-wrap {
-    color: #666 !important;
-}
-
-/* =========================================================
-   7. 复制反馈 Snackbar (左下角小黑框)
-   ========================================================= */
-.snackbar-container {
-    background: #333 !important;
-    color: #fff !important;
-    border-left: 4px solid #39c5bb !important; /* 初音绿 */
-    border-radius: 4px !important;
-    bottom: 20px !important;
-    left: 20px !important;
-    transform: none !important; /* 取消居中，固定左下角 */
-    justify-content: flex-start !important;
-}
-
-/* =========================================================
-   8. 字体与标题精修 (修改版)
-   ========================================================= */
-
-/* 1. 主标题：保持英伦风，但要变得更大 */
+/* 首页的大标题保持原样（如果你设置了花体，这里不会覆盖它） */
 #site-title {
-    font-family: 'Great Vibes', cursive !important;
-    font-size: 4.5em !important; /* 之前是 2.5em，现在加大到 4.5em */
-    font-weight: normal !important;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.6); /* 加重阴影，更有质感 */
-    margin-bottom: 10px !important;
+  /* 这里留空，让它保持你原本喜欢的花体 */
 }
 
-/* 2. 副标题：恢复正常字体，不要英伦风 */
-#site-subtitle {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
-    font-size: 1.5rem !important;
-    letter-spacing: 2px; /* 稍微把字间距拉开一点，好看 */
-    font-weight: bold !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+/* =================================================================
+   2. 全局背景与透明度 (Background & Transparency)
+   (已修复遮挡头图的问题)
+   ================================================================= */
+#web_bg {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* =========================================================
-   9. 全局毛玻璃 (Glassmorphism) 与 悬浮卡片特效
-   ========================================================= */
-
-/* --- 1. 定义透明度变量 (方便以后想改深浅直接改这里) --- */
-:root {
-  --trans-light: rgba(255, 255, 255, 0.85); /* 日间模式：85% 不透明白 */
-  --trans-dark: rgba(35, 35, 35, 0.85);     /* 夜间模式：85% 不透明黑 */
-  --backdrop-blur: 10px;                    /* 模糊程度：越大约模糊 */
+/* 卡片和列表透明，但不影响头图 */
+#aside-content .card-widget,
+#recent-posts > .recent-post-item,
+.layout > .recent-posts .pagination > *,
+.layout > div:first-child:not(.recent-posts) {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(5px);
 }
 
-/* --- 2. 应用透明背景 (文章卡片、侧边栏、独立页面) --- */
-#aside-content .card-widget,         /* 侧边栏卡片 */
-.recent-post-item,                   /* 首页文章卡片 */
-#post,                               /* 文章详情页背景 */
-.page-template,                      /* 普通页面背景 */
-#manual-swiper-container             /* 我们刚才手搓的轮播图 */
-{
-    background: var(--trans-light) !important;
-    backdrop-filter: blur(var(--backdrop-blur)); /* 关键：背景模糊滤镜 */
-    -webkit-backdrop-filter: blur(var(--backdrop-blur)); /* 兼容苹果Safari */
-}
-
-/* 夜间模式下的透明度适配 */
+/* 夜间模式适配 */
 [data-theme="dark"] #aside-content .card-widget,
-[data-theme="dark"] .recent-post-item,
-[data-theme="dark"] #post,
-[data-theme="dark"] .page-template,
-[data-theme="dark"] #manual-swiper-container
-{
-    background: var(--trans-dark) !important;
+[data-theme="dark"] #recent-posts > .recent-post-item,
+[data-theme="dark"] .layout > div:first-child:not(.recent-posts),
+[data-theme="dark"] .layout > .recent-posts .pagination > * {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(5px);
 }
 
-/* --- 3. 悬浮呼吸特效 (Hover Effects) --- */
-/* 当鼠标悬停在文章卡片或侧边栏上时 */
-.recent-post-item:hover,
-#aside-content .card-widget:hover,
-#manual-swiper-container:hover {
-    transform: translateY(-5px) scale(1.01); /* 稍微上浮并放大一点点 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important; /* 阴影加深，营造立体感 */
-    transition: all 0.3s ease-in-out; /* 丝滑过渡 */
-    z-index: 10;
+/* =================================================================
+   3. 首页轮播图样式
+   ================================================================= */
+#swiper_container {
+  background: #fff;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-/* --- 4. 优化文章内部文字阅读体验 --- */
-/* 防止背景太花导致文字看不清，正文区域颜色稍微加深一点 */
-#article-container {
-    background: transparent; 
+[data-theme="dark"] #swiper_container {
+  background: #232323;
 }
 
-/* =========================================================
-   9. 字体隔离修复 (只留大标题英伦风，其他全部还原)
-   ========================================================= */
-
-/* 1. 强制文章标题、分类标题、卡片标题使用标准黑体 */
-#post-info .post-title,            /* 文章详情页的大标题 */
-.recent-post-item .article-title,  /* 首页列表里的文章标题 */
-#page-title,                       /* 页面中间的分类标题 (如"编程语言") */
-.site-name,                        /* 左上角导航栏的站名 */
-h1, h2, h3, h4, h5, h6             /* 所有普通标题 */
-{
-    font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif !important;
+.blog-slider__item {
+  height: 280px !important;
 }
 
-/* 2. 确保那个最大的标题依然是英伦风 (保持不变) */
-#site-title {
-    font-family: 'Great Vibes', cursive !important;
+/* =================================================================
+   4. 滚动条美化
+   ================================================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #49b1f5;
+  border-radius: 4px;
+}
+
+/* =================================================================
+   5. 其他细节
+   ================================================================= */
+::selection {
+  background: #49b1f5;
+  color: #fff;
+}
+
+#page-header:not(.not-top-img) #nav {
+  background: transparent;
+  box-shadow: none;
 }

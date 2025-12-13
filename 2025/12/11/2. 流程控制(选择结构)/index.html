@@ -160,15 +160,24 @@
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/css/custom.css"><link href="https://fonts.loli.net/css2?family=Great+Vibes&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
-  /* ====================
-     ⚛️ 1. Loading 动画魔改: 初音反应堆
-     ==================== */
-  .configure-border-1, .configure-border-2 {
-      background: transparent !important;
+  /* =============== 字体终极修复 (The Font Fix) =============== */
+  
+  /* 1. 针对“比赛WP”、“编程语言”等所有内页大标题：强行改回正常字体 */
+  /* 使用了最高优先级的 ID 选择器，绝对有效 */
+  #page-header #page-title, 
+  .page-title {
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif !important;
+      font-weight: bold !important;
   }
-  .configure-core {
-      background-color: transparent !important;
+
+  /* 2. 只有首页那个最大的 "Welcome" 保持花体 */
+  #site-title {
+      font-family: 'Great Vibes', cursive !important;
   }
+
+  /* =============== Loading 动画魔改: 初音反应堆 =============== */
+  .configure-border-1, .configure-border-2 { background: transparent !important; }
+  .configure-core { background-color: transparent !important; }
   .configure-border-1 {
       border: 4px solid #39c5bb !important;
       border-radius: 50% !important;
@@ -183,21 +192,15 @@
       transform: rotate(45deg);
       animation: configure-xclockwise 3s ease-in-out infinite alternate !important;
   }
-  #loading-box {
-      background: #121212 !important; 
-  }
+  #loading-box { background: #121212 !important; }
 
-  /* ====================
-     🎨 2. 全局 UI 细节
-     ==================== */
+  /* =============== 全局 UI 细节 =============== */
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #39c5bb; border-radius: 5px; }
   ::-webkit-scrollbar-thumb:hover { background: #2ea9a0; }
 
-  /* ====================
-     🛠️ 3. 组件修复 & 看板娘
-     ==================== */
+  /* =============== 组件修复 & 看板娘位置 =============== */
   .aplayer-fixed { z-index: 999999 !important; display: block !important; }
   .aplayer-lrc { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; height: 30px !important; overflow: hidden !important; background: rgba(0, 0, 0, 0.4) !important; z-index: 999998 !important; pointer-events: none !important; }
   .aplayer-lrc p { color: rgba(255, 255, 255, 0.6) !important; font-family: 'Microsoft YaHei', sans-serif !important; font-size: 14px !important; line-height: 30px !important; text-shadow: 1px 1px 1px #000 !important; margin: 0 !important; }
@@ -395,7 +398,7 @@ document.addEventListener('visibilitychange', function () {
 function addWaves() {
   var header = document.getElementById('page-header');
   if (header && !document.getElementById('waves') && location.pathname === '/') {
-    header.insertAdjacentHTML('beforeend', '<svg class="waves" id="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0" /><use xlink:href="#gentle-wave" x="48" y="3" /><use xlink:href="#gentle-wave" x="48" y="5" /><use xlink:href="#gentle-wave" x="48" y="7" /></g></svg>');
+    header.insertAdjacentHTML('beforeend', '<svg class="waves" id="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 58 18 88 18 58 18 88 18 v44h-352z" /></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0" /><use xlink:href="#gentle-wave" x="48" y="3" /><use xlink:href="#gentle-wave" x="48" y="5" /><use xlink:href="#gentle-wave" x="48" y="7" /></g></svg>');
   }
 }
 addWaves(); document.addEventListener('pjax:complete', addWaves);

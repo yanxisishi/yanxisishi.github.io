@@ -160,53 +160,29 @@
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/css/custom.css"><link href="https://fonts.loli.net/css2?family=Great+Vibes&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
-  /* ↓↓↓↓↓↓↓ 请把下面这段粘贴到你的 <style> 标签里 ↓↓↓↓↓↓↓ */
-  
-  /* 1. 强制所有页面标题（如 比赛WP、编程语言）使用黑体 */
-  #page-header .page-title {
-      font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif !important;
-      font-weight: bold !important;
-  }
-  
-  /* 2. 强制文章标题使用黑体 */
-  #post-info .post-title,
-  .recent-post-item .article-title {
-      font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif !important;
-  }
-
-  /* 3. 只有首页那个最大的 "Welcome" 保持花体，其他全部还原 */
-  #site-title {
-      font-family: 'Great Vibes', cursive !important;
-  }
-<style>
   /* ====================
      ⚛️ 1. Loading 动画魔改: 初音反应堆
      ==================== */
-  /* 隐藏原本的背景色，防止看着像方块 */
   .configure-border-1, .configure-border-2 {
       background: transparent !important;
   }
-  
-  /* 核心样式：把方块变成发光的圆环 */
   .configure-core {
       background-color: transparent !important;
   }
   .configure-border-1 {
-      border: 4px solid #39c5bb !important; /* 初音绿边框 */
-      border-radius: 50% !important;        /* 变成圆 */
-      box-shadow: 0 0 15px #39c5bb, inset 0 0 15px #39c5bb !important; /* 内外发光特效 */
-      transform: rotate(45deg); /* 初始角度 */
-      animation: configure-clockwise 3s ease-in-out infinite alternate !important; /* 调整转速 */
+      border: 4px solid #39c5bb !important;
+      border-radius: 50% !important;
+      box-shadow: 0 0 15px #39c5bb, inset 0 0 15px #39c5bb !important;
+      transform: rotate(45deg);
+      animation: configure-clockwise 3s ease-in-out infinite alternate !important;
   }
   .configure-border-2 {
-      border: 4px solid #fff !important;    /* 白色内环 */
+      border: 4px solid #fff !important;
       border-radius: 50% !important;
-      box-shadow: 0 0 10px #fff, inset 0 0 10px #fff !important; /* 白色发光 */
+      box-shadow: 0 0 10px #fff, inset 0 0 10px #fff !important;
       transform: rotate(45deg);
       animation: configure-xclockwise 3s ease-in-out infinite alternate !important;
   }
-  
-  /* 加载页面的背景色 (稍微深一点，让发光更明显) */
   #loading-box {
       background: #121212 !important; 
   }
@@ -218,8 +194,6 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #39c5bb; border-radius: 5px; }
   ::-webkit-scrollbar-thumb:hover { background: #2ea9a0; }
-  ::selection { background: #39c5bb; color: #fff; }
-  ::-moz-selection { background: #39c5bb; color: #fff; }
 
   /* ====================
      🛠️ 3. 组件修复 & 看板娘

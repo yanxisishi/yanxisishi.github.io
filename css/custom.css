@@ -1,5 +1,5 @@
 /* =================================================================
-   1. 字体设置 (Font Settings)
+   1. 字体终极修正 (Font Settings)
    ================================================================= */
 @font-face {
   font-family: 'PingFang SC';
@@ -7,7 +7,6 @@
   font-display: swap;
 }
 
-/* 全局默认字体 */
 body {
   font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
 }
@@ -17,20 +16,22 @@ code, pre, .highlight {
   font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
 }
 
-/* 【新增】强制修复：内部页面的大标题（如"比赛WP"）使用正常字体 */
-#page-title {
+/* 【核心修复】强制所有内部页面的大标题（如"比赛WP"）使用黑体
+   使用了最高优先级的写法，绝对不会再变花体 */
+#page-header #page-title,
+#page-header .page-title,
+h1.page-title {
   font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
-  font-weight: bold; /* 加粗一点，更清晰 */
+  font-weight: bold;
 }
 
-/* 首页的大标题保持原样（如果你设置了花体，这里不会覆盖它） */
+/* 只有首页的 "Welcome" 保持花体 */
 #site-title {
-  /* 这里留空，让它保持你原本喜欢的花体 */
+  font-family: 'Great Vibes', cursive !important;
 }
 
 /* =================================================================
-   2. 全局背景与透明度 (Background & Transparency)
-   (已修复遮挡头图的问题)
+   2. 全局背景与透明度
    ================================================================= */
 #web_bg {
   background-attachment: fixed;
@@ -38,7 +39,7 @@ code, pre, .highlight {
   background-size: cover;
 }
 
-/* 卡片和列表透明，但不影响头图 */
+/* 修复：只让卡片透明，绝不遮挡头图 */
 #aside-content .card-widget,
 #recent-posts > .recent-post-item,
 .layout > .recent-posts .pagination > *,
@@ -47,7 +48,6 @@ code, pre, .highlight {
   backdrop-filter: blur(5px);
 }
 
-/* 夜间模式适配 */
 [data-theme="dark"] #aside-content .card-widget,
 [data-theme="dark"] #recent-posts > .recent-post-item,
 [data-theme="dark"] .layout > div:first-child:not(.recent-posts),
@@ -57,7 +57,7 @@ code, pre, .highlight {
 }
 
 /* =================================================================
-   3. 首页轮播图样式
+   3. 首页轮播图
    ================================================================= */
 #swiper_container {
   background: #fff;
@@ -84,11 +84,9 @@ code, pre, .highlight {
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #49b1f5;
   border-radius: 4px;
@@ -101,7 +99,6 @@ code, pre, .highlight {
   background: #49b1f5;
   color: #fff;
 }
-
 #page-header:not(.not-top-img) #nav {
   background: transparent;
   box-shadow: none;

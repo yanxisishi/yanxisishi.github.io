@@ -103,3 +103,22 @@ h1.page-title {
   background: transparent;
   box-shadow: none;
 }
+
+/* =================================================================
+   6. 页脚透明化修复 (Footer Fix)
+   去除底部的蓝色背景，让它变成透明或磨砂
+   ================================================================= */
+#footer {
+  background: transparent !important;
+  /* 如果觉得字看不清，可以用下面这行加一点点半透明白底，不需要则删掉 */
+  /* background: rgba(255, 255, 255, 0.3) !important; */
+  backdrop-filter: blur(5px);
+}
+
+#footer::before {
+  background: transparent !important;
+}
+
+/* 如果你想把页脚的文字颜色改成深色（防止背景太亮看不清），可以用这行 */
+/* #footer-wrap { color: #333 !important; } */
+/* #footer-wrap a { color: #333 !important; } */
